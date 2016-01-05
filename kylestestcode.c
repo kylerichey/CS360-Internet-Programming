@@ -1,5 +1,5 @@
 int main ()
 {
 cout << "kaleb and cole are good git teachers";
-return suckitcole=0;
+return suckitcole=1;
 }
