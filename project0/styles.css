@@ -1,0 +1,155 @@
+h1
+{ 
+    color: #2A2fA9;
+}
+
+#resume{
+    background:whitesmoke;
+    width:800px;
+    margin:0 auto;
+    display:block;
+    padding:20px;
+   box-shadow:3px 3px 8px black;
+}
+
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+body {
+    background-color: #d0e4fe;
+
+}
+
+p {
+    font-family: "Times New Roman";
+    font-size: 20px;
+}
+
+
+h3
+{
+    font-size: large;
+    font-weight:bold;
+}
+
+
+#content
+{
+    list-style-type:none;
+    color: #2A20A9;
+    padding-left:0;
+
+}
+
+#name
+{
+    
+    list-style-type:none!important;
+    padding-left:0;
+     font-size: 18px;
+}
+
+pre
+{
+      font-size: 18px;
+       padding-left:0;
+        color: #2A20A9;
+}
+
+
+ul li
+{
+    list-style-type: square;
+}
+
+ul li ul li{
+    list-style-type:circle;
+}
+
+
+#nav_menu 
+{
+    font-family: arial, sans-serif;
+    width: 800px;
+    height:56px;
+    font-size:14px;
+    color: #2A20A9;
+}
+
+#nav_menu ul li, #name li
+{
+    list-style-type: none;
+}
+
+#nav_menu ul li 
+{
+    float: left;
+    position: relative;
+}
+
+#nav_menu ul li a 
+{
+  
+    border-right:1px solid #e9e9e9;
+    border-left:1px solid #e9e9e9;
+    padding:20px;
+    display:block;
+    text-decoration:none;
+   color: #2A20A9;
+}
+
+#nav_menu li:hover > a 
+{
+    background:white;
+}
+
+#nav_menu ul li ul 
+{
+    display: none
+}
+
+#nav_menu ul li
+{
+    display: block;
+}
+
+#nav_menu ul li:hover ul li a 
+{
+    display:block;
+    background:#12aeef;
+    color:#ffffff;
+    width: 110px;
+   
+    border-bottom: 1px solid #f2f2f2;
+    border-right: none;
+}
+
+#nav_menu ul li:hover ul li a:hover 
+{
+    background:#6dc7ec;
+    color:#fff;
+}
+
+#temp li:after{
+    content:' \00b0 F';
+}
