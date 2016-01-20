@@ -1,0 +1,12 @@
+!SESSION 2016-01-19 20:26:50.823 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.7.0_91
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86 -data /home/warcraft/workspace/cs360
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-01-19 20:28:31.581
+!MESSAGE Indexed '2' (1 sources, 0 headers) in 0.28 sec: 1 declarations; 0 references; 1 unresolved inclusions; 0 syntax errors; 3 unresolved names (75.00%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-01-19 20:30:59.265
+!MESSAGE Indexed 'project1' (2 sources, 0 headers) in 0.03 sec: 65 declarations; 219 references; 14 unresolved inclusions; 0 syntax errors; 131 unresolved names (31.57%)

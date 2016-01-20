@@ -1,0 +1,39 @@
+20:31:17 **** Clean-only build of configuration Debug for project project1 ****
+make clean 
+rm -rf  ./src/lab1.o  ./src/lab1.d  project1
+ 
+20:31:17 **** Build of configuration Debug for project project1 ****
+make all 
+Building file: ../src/lab1.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/lab1.d" -MT"src/lab1.d" -o "src/lab1.o" "../src/lab1.cpp"
+../src/lab1.cpp: In function ‘int main(int, char**)’:
+../src/lab1.cpp:330:40: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (int i = 0; i < headerLines.size(); i++) {
+                                        ^
+Finished building: ../src/lab1.cpp
+ 
+Building target: project1
+Invoking: Cross G++ Linker
+g++  -o "project1"  ./src/lab1.o   
+Finished building target: project1
+ 
+20:31:22 **** Incremental Build of configuration Debug for project project1 ****
+make all 
+make: Nothing to be done for `all'.
+20:31:27 **** Incremental Build of configuration Debug for project project1 ****
+make all 
+Building file: ../src/lab1.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/lab1.d" -MT"src/lab1.d" -o "src/lab1.o" "../src/lab1.cpp"
+../src/lab1.cpp: In function ‘int main(int, char**)’:
+../src/lab1.cpp:330:40: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (int i = 0; i < headerLines.size(); i++) {
+                                        ^
+Finished building: ../src/lab1.cpp
+ 
+Building target: project1
+Invoking: Cross G++ Linker
+g++  -o "project1"  ./src/lab1.o   
+Finished building target: project1
+ 
