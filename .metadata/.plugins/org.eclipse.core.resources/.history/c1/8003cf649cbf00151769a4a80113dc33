@@ -346,12 +346,13 @@ int main(int argc, char **argv) {
 
 		read(hSocket, buffer, length);
 
-		if (!repeat || debug) {
+		if (debug) {
 			printf("HTML Body\n");
-			for (int i = 0; i < length; i++) {
-				printf("%c", buffer[i]);
-			}
 		}
+		for (int i = 0; i < length; i++) {
+			printf("%c", buffer[i]);
+		}
+
 		// Now read and print the rest of the file
 
 		/* close socket */

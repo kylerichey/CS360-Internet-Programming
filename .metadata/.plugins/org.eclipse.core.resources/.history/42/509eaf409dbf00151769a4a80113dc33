@@ -203,7 +203,7 @@ int main(int argc, char **argv) {
 	while (repeatCounter > 0) {
 
 		if (repeat) {
-			printf("%i repeats to go\n", repeatCounter);
+			printf("%i repeat s to go\n", repeatCounter);
 
 		}
 
@@ -346,7 +346,7 @@ int main(int argc, char **argv) {
 
 		read(hSocket, buffer, length);
 
-		if (!repeat || debug) {
+		if (!repeat) {
 			printf("HTML Body\n");
 			for (int i = 0; i < length; i++) {
 				printf("%c", buffer[i]);

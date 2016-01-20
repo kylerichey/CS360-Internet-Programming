@@ -188,3 +188,12 @@ org.eclipse.core.internal.resources.ResourceException: Resource is out of sync w
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
 !SUBENTRY 2 org.eclipse.core.resources 4 274 2016-01-20 08:44:23.687
 !MESSAGE Resource is out of sync with the file system: '/project1/.settings/language.settings.xml'.
+!SESSION 2016-01-20 09:35:38.441 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.7.0_91
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-01-20 09:42:20.973
+!MESSAGE Indexed 'project1' (2 sources, 0 headers) in 0.10 sec: 65 declarations; 219 references; 14 unresolved inclusions; 0 syntax errors; 131 unresolved names (31.57%)
