@@ -10,14 +10,13 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
-#include <vector>
+#include <vector>             // stl vector
 
 #define SOCKET_ERROR        -1
 #define BUFFER_SIZE         555
 #define HOST_NAME_SIZE      255
 #define MAX_MSG_SZ     		1024
 #define MAXMSG 				1024
-
 using namespace std;
 
 // Determine if the character is whitespace
@@ -187,7 +186,8 @@ int main(int argc, char **argv) {
 		cout << "USAGE: download [-args] [host] [port] [URL] " << endl;
 		exit(0);
 	}
-
+	//printf("%i",argc);
+	//printf("%s",argv[3]);
 
 	string hostname = argv[argOffset];
 	string port = argv[argOffset + 1];
