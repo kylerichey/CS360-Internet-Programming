@@ -36,7 +36,7 @@
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="download.cpp" partName="download.cpp" path="/home/warcraft/workspace/cs360/project1/src/download.cpp" title="download.cpp" tooltip="project1/src/download.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/project1/src/download.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4537" selectionTopPixel="5461"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8523" selectionTopPixel="5448"/>
 </editor>
 </editors>
 <views>
@@ -49,6 +49,7 @@
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
 <category IMemento.internal.id="Warnings (1 item)"/>
+<category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="105" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -220,7 +221,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.24950495" ratioLeft="252" ratioRight="758" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottom" ratio="0.7568306" ratioLeft="831" ratioRight="267" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.5930931" ratioLeft="395" ratioRight="271" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
@@ -255,6 +256,7 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/project1/src/project1.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/project1/src/lab1.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/project1/src/download.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/project1/src/project1.cpp"/>
 </editors>
 <item historyLabel="2.cpp" index="0">
 <position info="not_deleted" x="79" y="0"/>
@@ -268,8 +270,26 @@
 <item historyLabel="download.cpp" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item active="true" historyLabel="download.cpp" index="3">
+<item historyLabel="download.cpp" index="3">
+<position info="not_deleted" x="4537" y="0"/>
+</item>
+<item historyLabel="download.cpp" index="3">
+<position info="not_deleted" x="4916" y="0"/>
+</item>
+<item historyLabel="project1.cpp" index="4">
+<position info="not_deleted" x="79" y="0"/>
+</item>
+<item historyLabel="download.cpp" index="3">
 <position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="download.cpp" index="3">
+<position info="not_deleted" x="8212" y="0"/>
+</item>
+<item historyLabel="download.cpp" index="3">
+<position info="not_deleted" x="8227" y="0"/>
+</item>
+<item active="true" historyLabel="download.cpp" index="3">
+<position info="not_deleted" x="8652" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -291,11 +311,11 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="download.cpp" tooltip="project1/src/download.cpp">
 <persistable path="/project1/src/download.cpp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="lab1.cpp" tooltip="project1/src/lab1.cpp">
-<persistable path="/project1/src/lab1.cpp"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="project1.cpp" tooltip="project1/src/project1.cpp">
 <persistable path="/project1/src/project1.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="lab1.cpp" tooltip="project1/src/lab1.cpp">
+<persistable path="/project1/src/lab1.cpp"/>
 </file>
 </mruList>
 </workbench>

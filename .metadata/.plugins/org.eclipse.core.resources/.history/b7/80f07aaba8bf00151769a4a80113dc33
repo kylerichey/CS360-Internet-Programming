@@ -10,13 +10,14 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
-#include <vector>             // stl vector
+#include <vector>
 
 #define SOCKET_ERROR        -1
 #define BUFFER_SIZE         555
 #define HOST_NAME_SIZE      255
 #define MAX_MSG_SZ     		1024
 #define MAXMSG 				1024
+
 using namespace std;
 
 // Determine if the character is whitespace
@@ -186,8 +187,7 @@ int main(int argc, char **argv) {
 		cout << "USAGE: download [-args] [host] [port] [URL] " << endl;
 		exit(0);
 	}
-	//printf("%i",argc);
-	//printf("%s",argv[3]);
+
 
 	string hostname = argv[argOffset];
 	string port = argv[argOffset + 1];
@@ -317,7 +317,7 @@ int main(int argc, char **argv) {
 		}
 
 		vector<char *> headerLines;
-		char buffer[MAX_MSG_SZ];
+
 		char contentLength[MAX_MSG_SZ];
 
 		//printf ("Splitting string \"%s\" into tokens:\n",pBuffer);
@@ -343,16 +343,16 @@ int main(int argc, char **argv) {
 
 		read(hSocket, pBuffer, 1);
 		int length = atoi(contentLength);
-
+		char * buffer = (char *) malloc(length);
+		//line = (char *) malloc((strlen(tline) + 10) * sizeof(char));
 		read(hSocket, buffer, length);
 
-		if (debug) {
+		if (!repeat || debug) {
 			printf("HTML Body\n");
+			for (int i = 0; i < length; i++) {
+				printf("%c", buffer[i]);
+			}
 		}
-		for (int i = 0; i < length; i++) {
-			printf("%c", buffer[i]);
-		}
-
 		// Now read and print the rest of the file
 
 		/* close socket */

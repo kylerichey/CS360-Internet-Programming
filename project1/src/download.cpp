@@ -317,7 +317,7 @@ int main(int argc, char **argv) {
 		}
 
 		vector<char *> headerLines;
-		char buffer[MAX_MSG_SZ];
+
 		char contentLength[MAX_MSG_SZ];
 
 		//printf ("Splitting string \"%s\" into tokens:\n",pBuffer);
@@ -343,7 +343,8 @@ int main(int argc, char **argv) {
 
 		read(hSocket, pBuffer, 1);
 		int length = atoi(contentLength);
-
+		char * buffer = (char *) malloc(length);
+		//line = (char *) malloc((strlen(tline) + 10) * sizeof(char));
 		read(hSocket, buffer, length);
 
 		if (!repeat || debug) {
@@ -360,6 +361,7 @@ int main(int argc, char **argv) {
 			return 0;
 		}
 		free(message);
+		free(buffer);
 		repeatCounter--;
 	}
 }
