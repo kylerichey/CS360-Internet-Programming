@@ -181,3 +181,901 @@ Finished building target: project1
 13:10:01 **** Incremental Build of configuration Debug for project project2 ****
 make all 
 make: Nothing to be done for `all'.
+15:26:32 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:42:23: error: incompatible types in assignment of ‘char*’ to ‘char [255]’
+         directoryPath = argv[2];
+                       ^
+../src/server.cpp:26:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:29:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+make: *** [src/server.o] Error 1
+15:27:13 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:26:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:29:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+15:27:32 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+15:30:44 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:22:21: error: expected ‘]’ before ‘;’ token
+ #define PATH_MAX 255;
+                     ^
+../src/server.cpp:47:17: note: in expansion of macro ‘PATH_MAX’
+      char path [PATH_MAX];
+                 ^
+../src/server.cpp:47:25: error: expected primary-expression before ‘]’ token
+      char path [PATH_MAX];
+                         ^
+../src/server.cpp:47:25: error: expected ‘;’ before ‘]’ token
+../src/server.cpp:49:13: error: ‘path’ was not declared in this scope
+      strcpy(path, argv[ 2]);
+             ^
+../src/server.cpp:22:21: error: expected ‘)’ before ‘;’ token
+ #define PATH_MAX 255;
+                     ^
+../src/server.cpp:55:25: note: in expansion of macro ‘PATH_MAX’
+      while (fgets(path, PATH_MAX, fp) != NULL)
+                         ^
+../src/server.cpp:22:21: error: expected ‘)’ before ‘;’ token
+ #define PATH_MAX 255;
+                     ^
+../src/server.cpp:55:25: note: in expansion of macro ‘PATH_MAX’
+      while (fgets(path, PATH_MAX, fp) != NULL)
+                         ^
+../src/server.cpp:55:33: error: expected primary-expression before ‘,’ token
+      while (fgets(path, PATH_MAX, fp) != NULL)
+                                 ^
+../src/server.cpp:55:37: error: expected ‘;’ before ‘)’ token
+      while (fgets(path, PATH_MAX, fp) != NULL)
+                                     ^
+../src/server.cpp:61:10: error: expected primary-expression before ‘...’ token
+          ...
+          ^
+../src/server.cpp:61:10: error: expected ‘;’ before ‘...’ token
+../src/server.cpp:65:10: error: expected primary-expression before ‘...’ token
+          ...
+          ^
+../src/server.cpp:65:10: error: expected ‘;’ before ‘...’ token
+../src/server.cpp:69:20: error: ‘directoryPath’ was not declared in this scope
+     printf("\n%s", directoryPath);
+                    ^
+../src/server.cpp:27:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:30:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+make: *** [src/server.o] Error 1
+15:33:00 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:49:18: error: expected ‘)’ before ‘argv’
+      strcpy(path argv[ 2]);
+                  ^
+../src/server.cpp:49:26: error: too few arguments to function ‘char* strcpy(char*, const char*)’
+      strcpy(path argv[ 2]);
+                          ^
+In file included from ../src/server.cpp:13:0:
+/usr/include/string.h:129:14: note: declared here
+ extern char *strcpy (char *__restrict __dest, const char *__restrict __src)
+              ^
+../src/server.cpp:27:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:30:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+make: *** [src/server.o] Error 1
+15:33:17 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:27:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:30:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+15:34:43 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+15:36:10 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:23:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:28:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:31:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+../src/server.cpp:46:8: warning: unused variable ‘len’ [-Wunused-variable]
+    int len;
+        ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+15:36:27 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:23:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:28:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:31:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+../src/server.cpp:46:8: warning: unused variable ‘len’ [-Wunused-variable]
+    int len;
+        ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+15:36:34 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:23:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:28:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:31:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+../src/server.cpp:46:8: warning: unused variable ‘len’ [-Wunused-variable]
+    int len;
+        ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+15:37:18 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+15:39:20 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:23:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:28:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:31:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+../src/server.cpp:46:8: warning: unused variable ‘len’ [-Wunused-variable]
+    int len;
+        ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+15:39:44 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:23:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:28:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:31:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+../src/server.cpp:46:8: warning: unused variable ‘len’ [-Wunused-variable]
+    int len;
+        ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:04:27 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:23:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:28:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:31:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:14:05 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:48:14: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+   char *path="test";
+              ^
+../src/server.cpp:64:15: warning: the address of ‘ssize_t read(int, void*, size_t)’ will always evaluate as ‘true’ [-Waddress]
+  else if (read)
+               ^
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:14:30 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:48:14: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+   char *path="1";
+              ^
+../src/server.cpp:64:15: warning: the address of ‘ssize_t read(int, void*, size_t)’ will always evaluate as ‘true’ [-Waddress]
+  else if (read)
+               ^
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:15:13 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:64:15: warning: the address of ‘ssize_t read(int, void*, size_t)’ will always evaluate as ‘true’ [-Waddress]
+  else if (read)
+               ^
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:22:35 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:49:15: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+  char *path = "1";
+               ^
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:24:56 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+16:25:39 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:49:15: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+  char *path = "test";
+               ^
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:26:43 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:27:35 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+16:28:01 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+16:28:07 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+16:28:17 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+16:29:23 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:29:43 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+16:30:04 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+16:31:19 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:31:56 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+16:32:13 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+16:32:31 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+16:37:39 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:58:8: error: ‘ENOENT’ was not declared in this scope
+    if (ENOENT == errno) {
+        ^
+../src/server.cpp:58:18: error: ‘errno’ was not declared in this scope
+    if (ENOENT == errno) {
+                  ^
+../src/server.cpp:61:8: error: ‘ENOTDIR’ was not declared in this scope
+    if (ENOTDIR == errno) {
+        ^
+../src/server.cpp:61:19: error: ‘errno’ was not declared in this scope
+    if (ENOTDIR == errno) {
+                   ^
+../src/server.cpp:74:11: error: ‘dp’ was not declared in this scope
+  else if (dp!=NULL)
+           ^
+../src/server.cpp:78:24: error: ‘dirp’ was not declared in this scope
+   while ((dp = readdir(dirp)) != NULL)
+                        ^
+../src/server.cpp:83:18: error: ‘dirp’ was not declared in this scope
+   (void)closedir(dirp);
+                  ^
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+make: *** [src/server.o] Error 1
+16:41:46 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:42:20 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:42:29 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+16:42:50 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+16:44:32 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:48:10: warning: unknown escape sequence: '\R' [enabled by default]
+   printf("\Removing leading / from %s",inputPath);
+          ^
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:48:41 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:55:12: error: invalid array assignment
+   inputPath=temp;
+            ^
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+make: *** [src/server.o] Error 1
+16:49:00 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:55:13: error: expected primary-expression before ‘]’ token
+   inputPath[]=temp[];
+             ^
+../src/server.cpp:55:20: error: expected primary-expression before ‘]’ token
+   inputPath[]=temp[];
+                    ^
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+make: *** [src/server.o] Error 1
+16:49:32 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:49:57 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:50:31 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp:25:0: warning: "PATH_MAX" redefined [enabled by default]
+ #define PATH_MAX 255
+ ^
+In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
+                 from /usr/include/i386-linux-gnu/bits/posix1_lim.h:160,
+                 from /usr/include/dirent.h:232,
+                 from ../src/server.cpp:17:
+/usr/include/linux/limits.h:12:0: note: this is the location of the previous definition
+ #define PATH_MAX        4096 /* # chars in a path name including nul */
+ ^
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:30:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:33:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+16:51:00 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.

@@ -14,11 +14,15 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <dirent.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 #define SOCKET_ERROR        -1
 #define BUFFER_SIZE         100
 #define MESSAGE             "This is the message I'm sending back and forth"
 #define QUEUE_SIZE          5
+#define PATH_MAX 255
 
 int main(int argc, char* argv[])
 {
@@ -28,18 +32,79 @@ int main(int argc, char* argv[])
     int nAddressSize=sizeof(struct sockaddr_in);
     char pBuffer[BUFFER_SIZE];
     int nHostPort;
+    char inputPath[255];
 
-    if(argc < 2)
+
+    if(argc < 3)
       {
-        printf("\nUsage: server host-port\n");
+        printf("\nUsage: server <host-port> <dir-path>\n");
         return 0;
       }
-    else
-      {
-        nHostPort=atoi(argv[1]);
-      }
+
+	nHostPort=atoi(argv[1]);
+	strcpy(inputPath, argv[2]);
+	if(inputPath[0]=='/')
+	{
+		printf("\nRemoving leading / from %s",inputPath);
+		char temp[255];
+		int length = strlen(inputPath);
+		for(int i=0;i<length;i++)
+		{
+			temp[i]=inputPath[i+1];
+		}
+		strcpy(inputPath,temp);
+
+	}
+
+	printf("\nThe port is %i\nThe Path is %s\n",nHostPort,inputPath);
 
 
+	char *path=inputPath;
+	//char *path = "test";
+
+	struct stat path_stat;
+	stat(path, &path_stat);
+	bool isFile= S_ISREG(path_stat.st_mode);
+	bool isDir = S_ISDIR(path_stat.st_mode);
+
+	if(isFile)
+	{
+		//is a file
+		struct stat st;
+		stat(path, &st);
+		int size = st.st_size;
+		printf("%s is a file that has %i bytes\n",inputPath,size);
+	}
+	else if (isDir)
+	{
+		//is a directory
+		DIR *dirp;
+		struct dirent *dp;
+		dirp = opendir(inputPath);
+		dp = readdir(dirp);
+		printf("%s is a directory with the following files:\n",path);
+		while ((dp = readdir(dirp)) != NULL)
+			{
+				printf("file %s\n", dp->d_name);
+			}
+
+		(void)closedir(dirp);
+		}
+	else
+	{
+		//isnt found
+		printf("%s is not found",path);
+	}
+
+
+
+
+
+
+
+
+
+   // printf("\n%s", directoryPath);
     printf("\nStarting server");
 
     printf("\nMaking socket");
