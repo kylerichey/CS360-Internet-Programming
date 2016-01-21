@@ -285,8 +285,8 @@ int main(int argc, char **argv) {
 
 		char * message = (char *) malloc(MAXMSG);
 
-		sprintf(message, "GET %s HTTP/1.1\r\nHost: %s:%i\r\n\r\n", strURLName,
-				strHostName,nHostPort);
+		sprintf(message, "GET %s HTTP/1.1\r\nHost: %s\r\n\r\n", strURLName,
+				strHostName);
 		if (debug) {
 			printf("\nMessage :\n%s\n", message);
 		}

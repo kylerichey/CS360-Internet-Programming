@@ -1,4 +1,168 @@
-09:43:05 **** Incremental Build of configuration Debug for project project1 ****
+12:40:09 **** Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+12:40:15 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+12:40:29 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:26:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+12:40:53 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+12:41:29 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+12:51:13 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:26:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+12:52:38 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:26:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+12:54:25 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+12:56:48 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:26:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+12:57:55 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:26:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+13:03:11 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:26:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:29:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+13:05:56 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:26:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:29:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+13:06:00 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+13:07:26 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+Building file: ../src/server.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/server.d" -MT"src/server.d" -o "src/server.o" "../src/server.cpp"
+../src/server.cpp: In function ‘int main(int, char**)’:
+../src/server.cpp:26:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:29:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+Finished building: ../src/server.cpp
+ 
+Building target: project2
+Invoking: Cross G++ Linker
+g++  -o "project2"  ./src/server.o   
+Finished building target: project2
+ 
+13:09:35 **** Incremental Build of configuration Debug for project project1 ****
 make all 
 Building file: ../src/download.cpp
 Invoking: Cross G++ Compiler
@@ -14,72 +178,6 @@ Invoking: Cross G++ Linker
 g++  -o "project1"  ./src/download.o   
 Finished building target: project1
  
-09:43:17 **** Incremental Build of configuration Debug for project project1 ****
-make all 
-make: Nothing to be done for `all'.
-09:45:00 **** Incremental Build of configuration Debug for project project1 ****
-make all 
-make: Nothing to be done for `all'.
-09:45:32 **** Incremental Build of configuration Debug for project project1 ****
-make all 
-make: Nothing to be done for `all'.
-09:46:03 **** Incremental Build of configuration Debug for project project1 ****
-make all 
-Building file: ../src/download.cpp
-Invoking: Cross G++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/download.d" -MT"src/download.d" -o "src/download.o" "../src/download.cpp"
-../src/download.cpp: In function ‘int main(int, char**)’:
-../src/download.cpp:331:40: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for (int i = 0; i < headerLines.size(); i++) {
-                                        ^
-Finished building: ../src/download.cpp
- 
-Building target: project1
-Invoking: Cross G++ Linker
-g++  -o "project1"  ./src/download.o   
-Finished building target: project1
- 
-09:46:38 **** Incremental Build of configuration Debug for project project1 ****
-make all 
-Building file: ../src/download.cpp
-Invoking: Cross G++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/download.d" -MT"src/download.d" -o "src/download.o" "../src/download.cpp"
-../src/download.cpp: In function ‘int main(int, char**)’:
-../src/download.cpp:331:40: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for (int i = 0; i < headerLines.size(); i++) {
-                                        ^
-Finished building: ../src/download.cpp
- 
-Building target: project1
-Invoking: Cross G++ Linker
-g++  -o "project1"  ./src/download.o   
-Finished building target: project1
- 
-10:55:37 **** Incremental Build of configuration Debug for project project1 ****
-make all 
-make: Nothing to be done for `all'.
-10:55:51 **** Incremental Build of configuration Debug for project project1 ****
-make all 
-make: Nothing to be done for `all'.
-11:04:47 **** Incremental Build of configuration Debug for project project1 ****
-make all 
-Building file: ../src/download.cpp
-Invoking: Cross G++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/download.d" -MT"src/download.d" -o "src/download.o" "../src/download.cpp"
-../src/download.cpp: In function ‘int main(int, char**)’:
-../src/download.cpp:331:40: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for (int i = 0; i < headerLines.size(); i++) {
-                                        ^
-Finished building: ../src/download.cpp
- 
-Building target: project1
-Invoking: Cross G++ Linker
-g++  -o "project1"  ./src/download.o   
-Finished building target: project1
- 
-11:05:34 **** Incremental Build of configuration Debug for project project1 ****
-make all 
-make: Nothing to be done for `all'.
-11:05:47 **** Incremental Build of configuration Debug for project project1 ****
+13:10:01 **** Incremental Build of configuration Debug for project project2 ****
 make all 
 make: Nothing to be done for `all'.
