@@ -16,13 +16,15 @@
 #include <stdlib.h>
 #include <dirent.h>
 #include <sys/stat.h>
-#include <unistd.h>
+#include <fstream>
 
 #define SOCKET_ERROR        -1
 #define BUFFER_SIZE         100
 #define MESSAGE             "This is the message I'm sending back and forth"
 #define QUEUE_SIZE          5
 #define PATH_MAX 255
+
+using namespace std;
 
 int main(int argc, char* argv[])
 {
@@ -67,16 +69,9 @@ int main(int argc, char* argv[])
 	bool isFile= S_ISREG(path_stat.st_mode);
 	bool isDir = S_ISDIR(path_stat.st_mode);
 
-	if(isFile)
+	if(isDir)
 	{
-		//is a file
-		struct stat st;
-		stat(path, &st);
-		int size = st.st_size;
-		printf("%s is a file that has %i bytes\n",inputPath,size);
-	}
-	else if (isDir)
-	{
+
 		//is a directory
 		DIR *dirp;
 		struct dirent *dp;
@@ -90,17 +85,18 @@ int main(int argc, char* argv[])
 
 		(void)closedir(dirp);
 		}
+	else if(isFile)
+	{
+		//is a file
+
+		printf("THis is a file not a directory\n");
+		return 0;
+	}
 	else
 	{
 		//isnt found
 		printf("%s is not found",path);
 	}
-
-
-
-
-
-
 
 
 
@@ -170,7 +166,7 @@ int main(int argc, char* argv[])
 
         char xBuffer[1000];
         char buffer[1];
-    	bool hasSeenNewLine = false;
+    /*	bool hasSeenNewLine = false;
     		int xBufferIndex = 0;
     		while (true) {
 
@@ -189,7 +185,85 @@ int main(int argc, char* argv[])
     			xBuffer[xBufferIndex++] = buffer[0];
     		}
 
-       printf("Message Received:%s",xBuffer);
+       printf("Header Received:%s",xBuffer);*/
+
+
+
+				int xBufferIndex = 0;
+				while (true) {
+
+					read(hSocket, buffer, 1);
+
+					if (buffer[0] == '\n') {
+						break;
+					}
+
+					xBuffer[xBufferIndex++] = buffer[0];
+				}
+
+		   printf("Get Received:%s",xBuffer);
+
+		   if(xBuffer[0]!= 'G' || xBuffer[1]!= 'E' || xBuffer[2]!= 'T' || xBuffer[3]!= ' ')
+		   {
+			   printf("Error in get header");
+			   return 0;
+		   }
+
+		  bool seenSpace =false;
+		  int pathIndex=0;
+		   xBufferIndex=4;
+		  char path[255];
+		  while(1)
+		  {
+			  if(xBuffer[xBufferIndex]==' ')
+			  {
+				  break;
+			  }
+			  path[pathIndex++]= xBuffer[xBufferIndex++];
+
+		  }
+		  printf("path:%s\n",path);
+		  char abPath[255];
+		  strcpy(abPath,inputPath);
+		  strcpy(abPath,path);
+		  printf("Absolute path:%s\n",abPath);
+
+		  if(abPath[0] == ' ')
+		  {
+				//Give directory listing
+		  }
+		  else
+		  {
+			  //remove leading /
+
+		  printf("\nRemoving leading / from %s",abPath);
+				char temp[255];
+				int length = strlen(abPath);
+				for(int i=0;i<length;i++)
+				{
+					temp[i]=abPath[i+1];
+				}
+				strcpy(abPath,temp);
+
+
+			 char *path2 = abPath;
+
+
+			struct stat st2;
+			stat(path2, &st2);
+			int size = st2.st_size;
+			 bool isFile= S_ISREG(st2.st_mode);
+			 printf("\n%s is a file:%d", abPath, isFile);
+			printf("%s is a file that has %i bytes\n",abPath,size);
+
+
+			FILE *fp = fopen(abPath,"r");
+			char *buf = (char *) malloc(size);
+			fread(buf,size, 1, fp);
+			printf("File info %s",buf);
+			free(buf);
+			fclose(fp);
+		  }
 
 
        // printf("\nSending \"%s\" to client",pBuffer);
@@ -201,10 +275,15 @@ int main(int argc, char* argv[])
       //  memset(pBuffer,0,sizeof(pBuffer));
        // read(hSocket,pBuffer,BUFFER_SIZE);
 
+
       /*  if(strcmp(pBuffer,MESSAGE) == 0)
             printf("\nThe messages match");
         else
             printf("\nSomething was changed in the message"); */
+
+       char outBuffer [2055];
+      // strcpy(outBuffer,"<!DOCTYPE html> <html> <head> <title>Hi there</title> </head> </html>");
+       write(hSocket,outBuffer,strlen(outBuffer)+1);
 
     printf("\nClosing the socket");
         /* close socket */
