@@ -206,13 +206,18 @@ Command-line arguments:  -os linux -ws gtk -arch x86
 
 !ENTRY org.eclipse.cdt.core 1 0 2016-01-20 12:39:42.769
 !MESSAGE Indexed 'project2' (1 sources, 0 headers) in 0.03 sec: 1 declarations; 0 references; 1 unresolved inclusions; 0 syntax errors; 3 unresolved names (75.00%)
+<<<<<<< HEAD
 !SESSION 2016-01-22 10:11:22.058 -----------------------------------------------
+=======
+!SESSION 2016-01-24 19:58:29.834 -----------------------------------------------
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 eclipse.buildId=debbuild
 java.version=1.7.0_91
 java.vendor=Oracle Corporation
 BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
 Command-line arguments:  -os linux -ws gtk -arch x86
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.cdt.debug.core 4 104 2016-01-22 16:10:13.055
 !MESSAGE The program file specified in the launch configuration does not exist
 !STACK 0
@@ -226,3 +231,7 @@ java.io.FileNotFoundException: /home/warcraft/workspace/cs360/project2/Debug/pro
 	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1047)
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1251)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+=======
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-24 19:58:32.645
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3

@@ -1079,6 +1079,7 @@ Finished building target: project2
 16:51:00 **** Incremental Build of configuration Debug for project project2 ****
 make all 
 make: Nothing to be done for `all'.
+<<<<<<< HEAD
 10:29:56 **** Incremental Build of configuration Debug for project project2 ****
 make all 
 Building file: ../src/server.cpp
@@ -1141,6 +1142,9 @@ g++  -o "project2"  ./src/server.o
 Finished building target: project2
  
 10:41:35 **** Incremental Build of configuration Debug for project project2 ****
+=======
+20:04:40 **** Incremental Build of configuration Debug for project project2 ****
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 make all 
 Building file: ../src/server.cpp
 Invoking: Cross G++ Compiler
@@ -1156,12 +1160,24 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
  #define PATH_MAX        4096 /* # chars in a path name including nul */
  ^
 ../src/server.cpp: In function ‘int main(int, char**)’:
+<<<<<<< HEAD
 ../src/server.cpp:32:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
      struct hostent* pHostInfo;   /* holds info about a machine */
                      ^
 ../src/server.cpp:35:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
      char pBuffer[BUFFER_SIZE];
           ^
+=======
+../src/server.cpp:192:8: warning: unused variable ‘seenSpace’ [-Wunused-variable]
+   bool seenSpace = false;
+        ^
+../src/server.cpp:31:18: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+  struct hostent* pHostInfo; /* holds info about a machine */
+                  ^
+../src/server.cpp:34:7: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+  char pBuffer[BUFFER_SIZE];
+       ^
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 Finished building: ../src/server.cpp
  
 Building target: project2
@@ -1169,10 +1185,17 @@ Invoking: Cross G++ Linker
 g++  -o "project2"  ./src/server.o   
 Finished building target: project2
  
+<<<<<<< HEAD
 10:48:19 **** Incremental Build of configuration Debug for project project2 ****
 make all 
 make: Nothing to be done for `all'.
 15:04:44 **** Incremental Build of configuration Debug for project project2 ****
+=======
+20:05:01 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+20:07:39 **** Incremental Build of configuration Debug for project project2 ****
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 make all 
 Building file: ../src/server.cpp
 Invoking: Cross G++ Compiler
@@ -1188,6 +1211,7 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
  #define PATH_MAX        4096 /* # chars in a path name including nul */
  ^
 ../src/server.cpp: In function ‘int main(int, char**)’:
+<<<<<<< HEAD
 ../src/server.cpp:217:18: error: incompatible types in assignment of ‘const char [3]’ to ‘char [255]’
         outBuffer = "hi";
                   ^
@@ -1301,6 +1325,17 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
 ../src/server.cpp:35:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
      char pBuffer[BUFFER_SIZE];
           ^
+=======
+../src/server.cpp:192:8: warning: unused variable ‘seenSpace’ [-Wunused-variable]
+   bool seenSpace = false;
+        ^
+../src/server.cpp:31:18: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+  struct hostent* pHostInfo; /* holds info about a machine */
+                  ^
+../src/server.cpp:34:7: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+  char pBuffer[BUFFER_SIZE];
+       ^
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 Finished building: ../src/server.cpp
  
 Building target: project2
@@ -1308,7 +1343,11 @@ Invoking: Cross G++ Linker
 g++  -o "project2"  ./src/server.o   
 Finished building target: project2
  
+<<<<<<< HEAD
 15:13:40 **** Incremental Build of configuration Debug for project project2 ****
+=======
+20:11:48 **** Incremental Build of configuration Debug for project project2 ****
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 make all 
 Building file: ../src/server.cpp
 Invoking: Cross G++ Compiler
@@ -1324,12 +1363,24 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
  #define PATH_MAX        4096 /* # chars in a path name including nul */
  ^
 ../src/server.cpp: In function ‘int main(int, char**)’:
+<<<<<<< HEAD
 ../src/server.cpp:32:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
      struct hostent* pHostInfo;   /* holds info about a machine */
                      ^
 ../src/server.cpp:35:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
      char pBuffer[BUFFER_SIZE];
           ^
+=======
+../src/server.cpp:191:8: warning: unused variable ‘seenSpace’ [-Wunused-variable]
+   bool seenSpace = false;
+        ^
+../src/server.cpp:31:18: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+  struct hostent* pHostInfo; /* holds info about a machine */
+                  ^
+../src/server.cpp:34:7: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+  char pBuffer[BUFFER_SIZE];
+       ^
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 Finished building: ../src/server.cpp
  
 Building target: project2
@@ -1337,6 +1388,7 @@ Invoking: Cross G++ Linker
 g++  -o "project2"  ./src/server.o   
 Finished building target: project2
  
+<<<<<<< HEAD
 15:57:49 **** Incremental Build of configuration Debug for project project2 ****
 make all 
 make: Nothing to be done for `all'.
@@ -1428,6 +1480,12 @@ g++  -o "project2"  ./src/server.o
 Finished building target: project2
  
 16:01:23 **** Incremental Build of configuration Debug for project project2 ****
+=======
+20:11:53 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+20:13:57 **** Incremental Build of configuration Debug for project project2 ****
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 make all 
 Building file: ../src/server.cpp
 Invoking: Cross G++ Compiler
@@ -1443,6 +1501,7 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
  #define PATH_MAX        4096 /* # chars in a path name including nul */
  ^
 ../src/server.cpp: In function ‘int main(int, char**)’:
+<<<<<<< HEAD
 ../src/server.cpp:201:14: warning: unused variable ‘hasSeenNewLine’ [-Wunused-variable]
          bool hasSeenNewLine = false;
               ^
@@ -1452,6 +1511,17 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
 ../src/server.cpp:35:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
      char pBuffer[BUFFER_SIZE];
           ^
+=======
+../src/server.cpp:191:8: warning: unused variable ‘seenSpace’ [-Wunused-variable]
+   bool seenSpace = false;
+        ^
+../src/server.cpp:31:18: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+  struct hostent* pHostInfo; /* holds info about a machine */
+                  ^
+../src/server.cpp:34:7: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+  char pBuffer[BUFFER_SIZE];
+       ^
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 Finished building: ../src/server.cpp
  
 Building target: project2
@@ -1459,6 +1529,7 @@ Invoking: Cross G++ Linker
 g++  -o "project2"  ./src/server.o   
 Finished building target: project2
  
+<<<<<<< HEAD
 16:01:26 **** Incremental Build of configuration Debug for project project2 ****
 make all 
 make: Nothing to be done for `all'.
@@ -1495,6 +1566,9 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
           ^
 make: *** [src/server.o] Error 1
 16:10:28 **** Incremental Build of configuration Debug for project project2 ****
+=======
+20:18:04 **** Incremental Build of configuration Debug for project project2 ****
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 make all 
 Building file: ../src/server.cpp
 Invoking: Cross G++ Compiler
@@ -1510,6 +1584,7 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
  #define PATH_MAX        4096 /* # chars in a path name including nul */
  ^
 ../src/server.cpp: In function ‘int main(int, char**)’:
+<<<<<<< HEAD
 ../src/server.cpp:201:14: warning: unused variable ‘hasSeenNewLine’ [-Wunused-variable]
          bool hasSeenNewLine = false;
               ^
@@ -1519,6 +1594,20 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
 ../src/server.cpp:35:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
      char pBuffer[BUFFER_SIZE];
           ^
+=======
+../src/server.cpp:191:8: warning: unused variable ‘seenSpace’ [-Wunused-variable]
+   bool seenSpace = false;
+        ^
+../src/server.cpp:272:8: warning: unused variable ‘outBuffer’ [-Wunused-variable]
+   char outBuffer[2055];
+        ^
+../src/server.cpp:31:18: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+  struct hostent* pHostInfo; /* holds info about a machine */
+                  ^
+../src/server.cpp:34:7: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+  char pBuffer[BUFFER_SIZE];
+       ^
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 Finished building: ../src/server.cpp
  
 Building target: project2
@@ -1526,7 +1615,11 @@ Invoking: Cross G++ Linker
 g++  -o "project2"  ./src/server.o   
 Finished building target: project2
  
+<<<<<<< HEAD
 16:11:06 **** Incremental Build of configuration Debug for project project2 ****
+=======
+20:19:24 **** Incremental Build of configuration Debug for project project2 ****
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 make all 
 Building file: ../src/server.cpp
 Invoking: Cross G++ Compiler
@@ -1542,6 +1635,7 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
  #define PATH_MAX        4096 /* # chars in a path name including nul */
  ^
 ../src/server.cpp: In function ‘int main(int, char**)’:
+<<<<<<< HEAD
 ../src/server.cpp:201:14: warning: unused variable ‘hasSeenNewLine’ [-Wunused-variable]
          bool hasSeenNewLine = false;
               ^
@@ -1551,6 +1645,20 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
 ../src/server.cpp:35:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
      char pBuffer[BUFFER_SIZE];
           ^
+=======
+../src/server.cpp:191:8: warning: unused variable ‘seenSpace’ [-Wunused-variable]
+   bool seenSpace = false;
+        ^
+../src/server.cpp:276:8: warning: unused variable ‘outBuffer’ [-Wunused-variable]
+   char outBuffer[2055];
+        ^
+../src/server.cpp:31:18: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+  struct hostent* pHostInfo; /* holds info about a machine */
+                  ^
+../src/server.cpp:34:7: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+  char pBuffer[BUFFER_SIZE];
+       ^
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 Finished building: ../src/server.cpp
  
 Building target: project2
@@ -1558,6 +1666,7 @@ Invoking: Cross G++ Linker
 g++  -o "project2"  ./src/server.o   
 Finished building target: project2
  
+<<<<<<< HEAD
 16:11:19 **** Incremental Build of configuration Debug for project project2 ****
 make all 
 make: Nothing to be done for `all'.
@@ -1661,6 +1770,12 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
           ^
 make: *** [src/server.o] Error 1
 16:19:40 **** Incremental Build of configuration Debug for project project2 ****
+=======
+20:19:28 **** Incremental Build of configuration Debug for project project2 ****
+make all 
+make: Nothing to be done for `all'.
+20:20:48 **** Incremental Build of configuration Debug for project project2 ****
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 make all 
 Building file: ../src/server.cpp
 Invoking: Cross G++ Compiler
@@ -1676,6 +1791,7 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
  #define PATH_MAX        4096 /* # chars in a path name including nul */
  ^
 ../src/server.cpp: In function ‘int main(int, char**)’:
+<<<<<<< HEAD
 ../src/server.cpp:231:16: error: ISO C++ forbids comparison between pointer and integer [-fpermissive]
      if(abPath==' ')
                 ^
@@ -2095,6 +2211,20 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
 ../src/server.cpp:35:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
      char pBuffer[BUFFER_SIZE];
           ^
+=======
+../src/server.cpp:191:8: warning: unused variable ‘seenSpace’ [-Wunused-variable]
+   bool seenSpace = false;
+        ^
+../src/server.cpp:276:8: warning: unused variable ‘outBuffer’ [-Wunused-variable]
+   char outBuffer[2055];
+        ^
+../src/server.cpp:31:18: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+  struct hostent* pHostInfo; /* holds info about a machine */
+                  ^
+../src/server.cpp:34:7: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+  char pBuffer[BUFFER_SIZE];
+       ^
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 Finished building: ../src/server.cpp
  
 Building target: project2

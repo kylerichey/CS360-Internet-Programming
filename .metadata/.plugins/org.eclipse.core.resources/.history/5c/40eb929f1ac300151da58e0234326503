@@ -204,23 +204,11 @@ int main(int argc, char* argv[]) {
 		strcpy(abPath, inputPath);
 		strcpy(abPath, path);
 		printf("Absolute path:%s\n", abPath);
-
-		printf("\nRemoving leading / from %s\n", abPath);
-		char temp[255];
-		int length = strlen(abPath);
-		for (int i = 0; i < length; i++) {
-			temp[i] = abPath[i + 1];
-		}
-		strcpy(abPath, temp);
-
-
-
 		char *path2 = abPath;
 		struct stat st2;
 		stat(path2, &st2);
 		bool isDir2 = S_ISDIR(st2.st_mode);
 		bool isFile2 = S_ISREG(st2.st_mode);
-
 		if (isDir2) {
 			//Give directory listing
 			printf("Printing directory\n");
@@ -235,8 +223,15 @@ int main(int argc, char* argv[]) {
 			(void) closedir(dirp);
 
 		} else if (isFile2) {
+			//remove leading /
 
-
+			printf("\nRemoving leading / from %s", abPath);
+			char temp[255];
+			int length = strlen(abPath);
+			for (int i = 0; i < length; i++) {
+				temp[i] = abPath[i + 1];
+			}
+			strcpy(abPath, temp);
 
 			char *path2 = abPath;
 

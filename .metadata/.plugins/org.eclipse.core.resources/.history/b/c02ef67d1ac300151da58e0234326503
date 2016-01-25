@@ -42,16 +42,16 @@ int main(int argc, char* argv[]) {
 
 	nHostPort = atoi(argv[1]);
 	strcpy(inputPath, argv[2]);
-	if (inputPath[0] == '/') {
-		printf("\nRemoving leading / from %s", inputPath);
-		char temp[255];
-		int length = strlen(inputPath);
-		for (int i = 0; i < length; i++) {
-			temp[i] = inputPath[i + 1];
-		}
-		strcpy(inputPath, temp);
+		if (inputPath[0] == '/') {
+	 printf("\nRemoving leading / from %s", inputPath);
+	 char temp[255];
+	 int length = strlen(inputPath);
+	 for (int i = 0; i < length; i++) {
+	 temp[i] = inputPath[i + 1];
+	 }
+	 strcpy(inputPath, temp);
 
-	}
+	 }
 
 	printf("\nThe port is %i\nThe Path is %s\n", nHostPort, inputPath);
 
@@ -205,59 +205,62 @@ int main(int argc, char* argv[]) {
 		strcpy(abPath, path);
 		printf("Absolute path:%s\n", abPath);
 
-		printf("\nRemoving leading / from %s\n", abPath);
-		char temp[255];
-		int length = strlen(abPath);
-		for (int i = 0; i < length; i++) {
-			temp[i] = abPath[i + 1];
-		}
-		strcpy(abPath, temp);
-
-
-
-		char *path2 = abPath;
-		struct stat st2;
-		stat(path2, &st2);
-		bool isDir2 = S_ISDIR(st2.st_mode);
-		bool isFile2 = S_ISREG(st2.st_mode);
-
-		if (isDir2) {
+		if (abPath[0] == ' ') {
 			//Give directory listing
 			printf("Printing directory\n");
+			char *path2 = abPath;
+			struct stat st2;
+			stat(path2, &st2);
+			bool isDir = S_ISDIR(st2.st_mode);
+			if(isDir){
+
 			DIR *dirp;
 			struct dirent *dp;
-			dirp = opendir(abPath);
+			dirp = opendir(inputPath);
 			dp = readdir(dirp);
 			printf("%s is a directory with the following files:\n", path);
 			while ((dp = readdir(dirp)) != NULL) {
 				printf("file %s\n", dp->d_name);
 			}
 			(void) closedir(dirp);
+			}
+			else
+			{
+				printf("Not a directory\n");
+			}
 
-		} else if (isFile2) {
+		} else {
+			//remove leading /
 
-
+			printf("\nRemoving leading / from %s", abPath);
+			char temp[255];
+			int length = strlen(abPath);
+			for (int i = 0; i < length; i++) {
+				temp[i] = abPath[i + 1];
+			}
+			strcpy(abPath, temp);
 
 			char *path2 = abPath;
 
 			struct stat st2;
 			stat(path2, &st2);
 			int size = st2.st_size;
+			bool isFile = S_ISREG(st2.st_mode);
+			if (isFile) {
+				//printf("\n%s is a file:%d", abPath, isFile);
+				//printf("%s is a file that has %i bytes\n", abPath, size);
 
-			//printf("\n%s is a file:%d", abPath, isFile);
-			//printf("%s is a file that has %i bytes\n", abPath, size);
+				FILE *fp = fopen(abPath, "r");
+				char *buf = (char *) malloc(size);
+				fread(buf, size, 1, fp);
+				//printf("File info %s", buf);
 
-			FILE *fp = fopen(abPath, "r");
-			char *buf = (char *) malloc(size);
-			fread(buf, size, 1, fp);
-			printf("File info %s", buf);
-
-			write(hSocket, buf, size);
-			free(buf);
-			fclose(fp);
-
-		} else {
-			printf("not found\n");
+				write(hSocket, buf, size);
+				free(buf);
+				fclose(fp);
+			} else {
+				printf("File not found\n");
+			}
 		}
 
 		// printf("\nSending \"%s\" to client",pBuffer);
@@ -275,7 +278,7 @@ int main(int argc, char* argv[]) {
 
 		char outBuffer[2055];
 		// strcpy(outBuffer,"<!DOCTYPE html> <html> <head> <title>Hi there</title> </head> </html>");
-		//write(hSocket, outBuffer, strlen(outBuffer) + 1);
+		write(hSocket, outBuffer, strlen(outBuffer) + 1);
 
 		printf("\nClosing the socket");
 		/* close socket */

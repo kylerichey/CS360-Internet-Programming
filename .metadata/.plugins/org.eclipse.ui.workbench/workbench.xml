@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="25" version="2.0">
+<workbench progressCount="22" version="2.0">
 <workbenchAdvisor/>
 <window height="767" maximized="true" width="1018" x="883" y="276">
 <fastViewData fastViewLocation="1024"/>
@@ -37,7 +37,11 @@
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="server.cpp" partName="server.cpp" path="/home/warcraft/workspace/cs360/project2/src/server.cpp" title="server.cpp" tooltip="project2/src/server.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/project2/src/server.cpp"/>
+<<<<<<< HEAD
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5846" selectionTopPixel="3811"/>
+=======
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6079" selectionTopPixel="3387"/>
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="download.cpp" partName="download.cpp" path="/home/warcraft/workspace/cs360/project1/src/download.cpp" title="download.cpp" tooltip="project1/src/download.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/project1/src/download.cpp"/>
@@ -56,6 +60,12 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<<<<<<< HEAD
+=======
+<expanded>
+<category IMemento.internal.id="Warnings"/>
+</expanded>
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="105" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -522,8 +532,37 @@
 <item historyLabel="server.cpp" index="0">
 <position info="not_deleted" x="723" y="20"/>
 </item>
+<<<<<<< HEAD
 <item active="true" historyLabel="server.cpp" index="0">
 <position info="not_deleted" x="5844" y="0"/>
+=======
+<item historyLabel="server.cpp" index="6">
+<position info="not_deleted" x="3030" y="0"/>
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
+</item>
+<item historyLabel="server.cpp" index="6">
+<position/>
+</item>
+<item historyLabel="server.cpp" index="6">
+<position info="not_deleted" x="1609" y="9"/>
+</item>
+<item historyLabel="server.cpp" index="6">
+<position info="not_deleted" x="5762" y="0"/>
+</item>
+<item historyLabel="server.cpp" index="6">
+<position info="not_deleted" x="5719" y="3"/>
+</item>
+<item historyLabel="server.cpp" index="6">
+<position info="not_deleted" x="5777" y="0"/>
+</item>
+<item historyLabel="server.cpp" index="6">
+<position/>
+</item>
+<item historyLabel="server.cpp" index="6">
+<position info="not_deleted" x="5653" y="0"/>
+</item>
+<item active="true" historyLabel="server.cpp" index="6">
+<position info="not_deleted" x="5447" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
