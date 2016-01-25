@@ -42,16 +42,16 @@ int main(int argc, char* argv[]) {
 
 	nHostPort = atoi(argv[1]);
 	strcpy(inputPath, argv[2]);
-	if (inputPath[0] == '/') {
-		printf("\nRemoving leading / from %s", inputPath);
-		char temp[255];
-		int length = strlen(inputPath);
-		for (int i = 0; i < length; i++) {
-			temp[i] = inputPath[i + 1];
-		}
-		strcpy(inputPath, temp);
+		if (inputPath[0] == '/') {
+	 printf("\nRemoving leading / from %s", inputPath);
+	 char temp[255];
+	 int length = strlen(inputPath);
+	 for (int i = 0; i < length; i++) {
+	 temp[i] = inputPath[i + 1];
+	 }
+	 strcpy(inputPath, temp);
 
-	}
+	 }
 
 	printf("\nThe port is %i\nThe Path is %s\n", nHostPort, inputPath);
 
@@ -204,29 +204,20 @@ int main(int argc, char* argv[]) {
 		strcpy(abPath, inputPath);
 		strcpy(abPath, path);
 		printf("Absolute path:%s\n", abPath);
-
-		printf("\nRemoving leading / from %s\n", abPath);
-		char temp[255];
-		int length = strlen(abPath);
-		for (int i = 0; i < length; i++) {
-			temp[i] = abPath[i + 1];
-		}
-		strcpy(abPath, temp);
-
-
-
 		char *path2 = abPath;
-		struct stat st2;
-		stat(path2, &st2);
-		bool isDir2 = S_ISDIR(st2.st_mode);
-		bool isFile2 = S_ISREG(st2.st_mode);
-
-		if (isDir2) {
+					struct stat st2;
+					stat(path2, &st2);
+					bool isDir2 = S_ISDIR(st2.st_mode);
+					bool isFile2 = S_ISREG(st2.st_mode);
+		 	if(isDir2){
 			//Give directory listing
 			printf("Printing directory\n");
+
+
+
 			DIR *dirp;
 			struct dirent *dp;
-			dirp = opendir(abPath);
+			dirp = opendir(inputPath);
 			dp = readdir(dirp);
 			printf("%s is a directory with the following files:\n", path);
 			while ((dp = readdir(dirp)) != NULL) {
@@ -234,9 +225,18 @@ int main(int argc, char* argv[]) {
 			}
 			(void) closedir(dirp);
 
-		} else if (isFile2) {
 
 
+		} else  if (isFile2){
+			//remove leading /
+
+			printf("\nRemoving leading / from %s", abPath);
+			char temp[255];
+			int length = strlen(abPath);
+			for (int i = 0; i < length; i++) {
+				temp[i] = abPath[i + 1];
+			}
+			strcpy(abPath, temp);
 
 			char *path2 = abPath;
 
@@ -244,19 +244,22 @@ int main(int argc, char* argv[]) {
 			stat(path2, &st2);
 			int size = st2.st_size;
 
-			//printf("\n%s is a file:%d", abPath, isFile);
-			//printf("%s is a file that has %i bytes\n", abPath, size);
 
-			FILE *fp = fopen(abPath, "r");
-			char *buf = (char *) malloc(size);
-			fread(buf, size, 1, fp);
-			printf("File info %s", buf);
+				//printf("\n%s is a file:%d", abPath, isFile);
+				//printf("%s is a file that has %i bytes\n", abPath, size);
 
-			write(hSocket, buf, size);
-			free(buf);
-			fclose(fp);
+				FILE *fp = fopen(abPath, "r");
+				char *buf = (char *) malloc(size);
+				fread(buf, size, 1, fp);
+				//printf("File info %s", buf);
 
-		} else {
+				write(hSocket, buf, size);
+				free(buf);
+				fclose(fp);
+
+		}
+		else
+		{
 			printf("not found\n");
 		}
 
