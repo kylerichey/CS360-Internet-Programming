@@ -20,18 +20,29 @@
 
 #define SOCKET_ERROR        -1
 #define BUFFER_SIZE         100
-#define MESSAGE             "This is the message I'm sending back and forth"
+
 #define QUEUE_SIZE          5
-#define PATH_MAX 255
 
 using namespace std;
 
+bool doesFileExists(const std::string& name) {
+	struct stat buffer;
+	return (stat(name.c_str(), &buffer) == 0);
+}
+
+const char *get_filename_ext(const char *filename) {
+	const char *dot = strrchr(filename, '.');
+	if (!dot || dot == filename)
+		return "";
+	return dot + 1;
+}
+
 int main(int argc, char* argv[]) {
+
 	int hSocket, hServerSocket; /* handle to socket */
-	struct hostent* pHostInfo; /* holds info about a machine */
+	//struct hostent* pHostInfo; /* holds info about a machine */
 	struct sockaddr_in Address; /* Internet socket address stuct */
 	int nAddressSize = sizeof(struct sockaddr_in);
-	char pBuffer[BUFFER_SIZE];
 	int nHostPort;
 	char inputPath[255];
 
@@ -42,50 +53,30 @@ int main(int argc, char* argv[]) {
 
 	nHostPort = atoi(argv[1]);
 	strcpy(inputPath, argv[2]);
-	if (inputPath[0] == '/') {
-		printf("\nRemoving leading / from %s", inputPath);
-		char temp[255];
-		int length = strlen(inputPath);
-		for (int i = 0; i < length; i++) {
-			temp[i] = inputPath[i + 1];
-		}
-		strcpy(inputPath, temp);
-
-	}
-
-	printf("\nThe port is %i\nThe Path is %s\n", nHostPort, inputPath);
 
 	char *path = inputPath;
-	//char *path = "test";
-
 	struct stat path_stat;
 	stat(path, &path_stat);
-	bool isFile = S_ISREG(path_stat.st_mode);
 	bool isDir = S_ISDIR(path_stat.st_mode);
 
 	if (isDir) {
-
-		//is a directory
-		DIR *dirp;
-		struct dirent *dp;
-		dirp = opendir(inputPath);
-		dp = readdir(dirp);
-		printf("%s is a directory with the following files:\n", path);
-		while ((dp = readdir(dirp)) != NULL) {
-			printf("file %s\n", dp->d_name);
-		}
-		(void) closedir(dirp);
-	} else if (isFile) {
-		//is a file
-
-		printf("THis is a file not a directory\n");
-		return 0;
+		printf("\nThe port is %i\nThe Path is %s\nThe path is valid\n",
+				nHostPort, inputPath);
+		/*DIR *dirp;
+		 struct dirent *dp;
+		 dirp = opendir(inputPath);
+		 dp = readdir(dirp);
+		 printf("%s is a directory with the following files:\n", path);
+		 while ((dp = readdir(dirp)) != NULL) {
+		 printf("file %s\n", dp->d_name);
+		 }
+		 (void) closedir(dirp);*/
 	} else {
 		//isnt found
-		printf("%s is not found", path);
+		printf("The path is not a directory - %s", path);
+		return 0;
 	}
 
-	// printf("\n%s", directoryPath);
 	printf("\nStarting server");
 
 	printf("\nMaking socket");
@@ -117,16 +108,16 @@ int main(int argc, char* argv[]) {
 	/*  get port number */
 	getsockname(hServerSocket, (struct sockaddr *) &Address,
 			(socklen_t *) &nAddressSize);
-	printf("opened socket as fd (%d) on port (%d) for stream i/o\n",
-			hServerSocket, ntohs(Address.sin_port));
+	/*printf("opened socket as fd (%d) on port (%d) for stream i/o\n",
+	 hServerSocket, ntohs(Address.sin_port));
 
-	printf(
-			"Server\n\
+	 printf(
+	 "Server\n\
               sin_family        = %d\n\
               sin_addr.s_addr   = %d\n\
               sin_port          = %d\n",
-			Address.sin_family, Address.sin_addr.s_addr,
-			ntohs(Address.sin_port));
+	 Address.sin_family, Address.sin_addr.s_addr,
+	 ntohs(Address.sin_port));*/
 
 	printf("\nMaking a listen queue of %d elements", QUEUE_SIZE);
 	/* establish listen queue */
@@ -136,6 +127,7 @@ int main(int argc, char* argv[]) {
 	}
 
 	while (1) {
+
 		printf("\nWaiting for a connection\n");
 		/* get the connected socket */
 		hSocket = accept(hServerSocket, (struct sockaddr*) &Address,
@@ -143,145 +135,154 @@ int main(int argc, char* argv[]) {
 
 		printf("\nGot a connection from %X (%d)\n", Address.sin_addr.s_addr,
 				ntohs(Address.sin_port));
-		// strcpy(pBuffer,MESSAGE);
 
-		char xBuffer[1000];
-		char buffer[1];
-		/*	bool hasSeenNewLine = false;
-		 int xBufferIndex = 0;
-		 while (true) {
+		char *buffer = (char *) malloc(1000);
+		char *path = (char *) malloc(1000);
+		char *abPath = (char *) malloc(1000);
 
-		 read(hSocket, buffer, 1);
-		 if (buffer[0] == '\r') {
-		 if (hasSeenNewLine) {
-		 break;
-		 }
-		 }
-		 if (buffer[0] == '\n') {
-		 hasSeenNewLine = true;
-		 } else {
-		 hasSeenNewLine = false;
-		 }
-
-		 xBuffer[xBufferIndex++] = buffer[0];
-		 }
-
-		 printf("Header Received:%s",xBuffer);*/
-
-		int xBufferIndex = 0;
-		while (true) {
-
-			read(hSocket, buffer, 1);
-
-			if (buffer[0] == '\n') {
-				break;
-			}
-
-			xBuffer[xBufferIndex++] = buffer[0];
-		}
-
-		printf("Get Received:%s", xBuffer);
-
-		if (xBuffer[0] != 'G' || xBuffer[1] != 'E' || xBuffer[2] != 'T'
-				|| xBuffer[3] != ' ') {
-			printf("Error in get header");
-			return 0;
-		}
-
-		bool seenSpace = false;
-		int pathIndex = 0;
-		xBufferIndex = 4;
-		char path[255];
-		while (1) {
-			if (xBuffer[xBufferIndex] == ' ') {
-				break;
-			}
-			path[pathIndex++] = xBuffer[xBufferIndex++];
-
-		}
-		printf("path:%s\n", path);
-		char abPath[255];
-		strcpy(abPath, inputPath);
-		strcpy(abPath, path);
-		printf("Absolute path:%s\n", abPath);
-
-		printf("\nRemoving leading / from %s\n", abPath);
-		char temp[255];
-		int length = strlen(abPath);
-		for (int i = 0; i < length; i++) {
-			temp[i] = abPath[i + 1];
-		}
-		strcpy(abPath, temp);
-
-
-
-		char *path2 = abPath;
-		struct stat st2;
-		stat(path2, &st2);
-		bool isDir2 = S_ISDIR(st2.st_mode);
-		bool isFile2 = S_ISREG(st2.st_mode);
-
-		if (isDir2) {
-			//Give directory listing
-			printf("Printing directory\n");
-			DIR *dirp;
-			struct dirent *dp;
-			dirp = opendir(abPath);
-			dp = readdir(dirp);
-			printf("%s is a directory with the following files:\n", path);
-			while ((dp = readdir(dirp)) != NULL) {
-				printf("file %s\n", dp->d_name);
-			}
-			(void) closedir(dirp);
-
-		} else if (isFile2) {
-
-
-
-			char *path2 = abPath;
-
-			struct stat st2;
-			stat(path2, &st2);
-			int size = st2.st_size;
-
-			//printf("\n%s is a file:%d", abPath, isFile);
-			//printf("%s is a file that has %i bytes\n", abPath, size);
-
-			FILE *fp = fopen(abPath, "r");
-			char *buf = (char *) malloc(size);
-			fread(buf, size, 1, fp);
-			printf("File info %s", buf);
-
-			write(hSocket, buf, size);
-			free(buf);
-			fclose(fp);
-
+		read(hSocket, buffer, 1000);
+		//printf("%s\n",buffer);
+		if (buffer[0] != 'G') {
+			printf("Invalid Get, Dropping Connection\n");
 		} else {
-			printf("not found\n");
+
+			char * pch;
+			pch = strtok(buffer, " ");
+			pch = strtok(NULL, " ");
+			//printf("%s\n", pch);
+			strcpy(path, pch);
+			free(buffer);
+			strcpy(abPath, inputPath);
+			strcat(abPath, path);
+			free(path);
+
+			if (strstr(abPath, "favicon") != NULL) {
+				printf("Favicon request, Ignoring\n");
+
+			} else {
+				//printf("Absolute path:%s\n", abPath);
+
+				DIR *dirp;
+				struct dirent *dp;
+				dirp = opendir(abPath);
+				if (dirp != NULL) {
+					//is a dir
+					dp = readdir(dirp);
+					int size = 0;
+					while ((dp = readdir(dirp)) != NULL) {
+						size = size + strlen(dp->d_name);
+					}
+					(void) closedir(dirp);
+					dirp = opendir(abPath);
+					dp = readdir(dirp);
+
+					char *body = (char *) malloc(size + 1000);
+					char *header = (char *) malloc(1000);
+
+					strcpy(header,
+							"HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n");
+					char *b = (char *) malloc(50);
+					sprintf(b, "Content-Length: %i\r\n\r\n", size + 1000);
+					strcat(header, b);
+					free(b);
+
+					char *c = (char *) malloc(100);
+					sprintf(c,
+							"<html> <head> <title>Directory Listing for %s </title> </head> <body> Name <hr />",
+							path);
+					strcat(body, c);
+					free(c);
+
+					while ((dp = readdir(dirp)) != NULL) {
+						//	printf("file %s\n", dp->d_name);
+						char *d = (char *) malloc(100);
+						//<a href="oral.html"> oral.html</a><br />
+						sprintf(d, "<a href=\"%s\"> %s</a><br />", dp->d_name,
+								dp->d_name);
+						strcat(body, d);
+						free(d);
+					}
+
+					char *e = (char *) malloc(50);
+					sprintf(e, " </body> </html> ");
+					strcat(body, e);
+					free(e);
+
+					write(hSocket, header, strlen(header));
+					write(hSocket, body, strlen(body));
+
+					free(body);
+					free(header);
+					free(abPath);
+
+				} else if (doesFileExists(abPath)) {
+					printf("File exists, sending to client\n");
+
+					struct stat st2;
+					stat(abPath, &st2);
+					int size = st2.st_size;
+					char *body = (char *) malloc(size);
+					char *header = (char *) malloc(1000);
+
+					//printf("\n%s is a file:%d", abPath, isFile);
+					//printf("%s is a file that has %i bytes\n", abPath, size);
+					FILE *fp = fopen(abPath, "r");
+					strcpy(header, "HTTP/1.1 200 OK\r\n");
+
+					const char *extension = get_filename_ext(abPath);
+
+					if (strcmp(extension, "html") == 0) {
+						//printf("is html\n");
+						strcat(header, "Content-Type: text/html\r\n");
+					} else if (strcmp(extension, "txt") == 0) {
+						//printf("is txt\n");
+						strcat(header, "Content-Type: text/plain\r\n");
+					} else if (strcmp(extension, "gif") == 0) {
+						//printf("is gif\n");
+						strcat(header, "Content-Type: image/gif\r\n");
+					} else if (strcmp(extension, "jpg") == 0) {
+						//printf("is jpg\n");
+						strcat(header, "Content-Type: image/jpg\r\n");
+					} else {
+						//plain?
+						strcat(header, "Content-Type: text/html\r\n");
+					}
+
+					char *b = (char *) malloc(50);
+					sprintf(b,
+							"Content-Length: %i\r\nConnection: keep-alive\r\n\r\n",
+							size);
+					strcat(header, b);
+					free(b);
+					fread(body, size, 1, fp);
+					write(hSocket, header, strlen(header));
+					write(hSocket, body, size);
+
+					free(body);
+					free(header);
+					free(abPath);
+					fclose(fp);
+
+				} else {
+					printf("Not a file or a driectory\n");
+					free(abPath);
+
+				}
+				(void) closedir(dirp);
+			}
+
+			linger lin;
+			unsigned int y = sizeof(lin);
+			lin.l_onoff = 1;
+			lin.l_linger = 10;
+			setsockopt(hSocket, SOL_SOCKET, SO_LINGER, &lin, sizeof(lin));
 		}
-
-		// printf("\nSending \"%s\" to client",pBuffer);
-		/* number returned by read() and write() is the number of bytes
-		 ** read or written, with -1 being that an error occured
-		 ** write what we received back to the server */
-		//  write(hSocket,pBuffer,strlen(pBuffer)+1);
-		/* read from socket into buffer */
-		//  memset(pBuffer,0,sizeof(pBuffer));
-		// read(hSocket,pBuffer,BUFFER_SIZE);
-		/*  if(strcmp(pBuffer,MESSAGE) == 0)
-		 printf("\nThe messages match");
-		 else
-		 printf("\nSomething was changed in the message"); */
-
-		char outBuffer[2055];
-		// strcpy(outBuffer,"<!DOCTYPE html> <html> <head> <title>Hi there</title> </head> </html>");
-		//write(hSocket, outBuffer, strlen(outBuffer) + 1);
-
 		printf("\nClosing the socket");
 		/* close socket */
 		if (close(hSocket) == SOCKET_ERROR) {
 			printf("\nCould not close socket\n");
 			return 0;
 		}
-	}
+
+	} //while1
 }
