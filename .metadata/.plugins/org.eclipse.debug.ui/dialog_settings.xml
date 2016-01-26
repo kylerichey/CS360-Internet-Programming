@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.debug.ui.LAUNCH_CONFIGURATIONS_DIALOG_SECTION">
-		<item value="840" key="DIALOG_WIDTH"/>
+		<item value="860" key="DIALOG_WIDTH"/>
 		<item value=", org.eclipse.cdt.launch.applicationLaunchType, " key="org.eclipse.debug.ui.EXPANDED_NODES"/>
+<<<<<<< HEAD
+		<item value="672" key="DIALOG_HEIGHT"/>
+=======
 		<item value="680" key="DIALOG_HEIGHT"/>
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 		<item value="237" key="org.eclipse.debug.ui.DIALOG_SASH_WEIGHTS_1"/>
 		<item value="762" key="org.eclipse.debug.ui.DIALOG_SASH_WEIGHTS_2"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>

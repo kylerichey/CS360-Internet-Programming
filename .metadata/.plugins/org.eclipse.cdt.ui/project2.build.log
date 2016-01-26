@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+16:31:29 **** Incremental Build of configuration Debug for project project2 ****
+=======
 20:20:48 **** Incremental Build of configuration Debug for project project2 ****
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 make all 
 Building file: ../src/server.cpp
 Invoking: Cross G++ Compiler
@@ -14,6 +18,17 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
  #define PATH_MAX        4096 /* # chars in a path name including nul */
  ^
 ../src/server.cpp: In function ‘int main(int, char**)’:
+<<<<<<< HEAD
+../src/server.cpp:212:10: warning: unused variable ‘seenSpace’ [-Wunused-variable]
+     bool seenSpace =false;
+          ^
+../src/server.cpp:32:21: warning: unused variable ‘pHostInfo’ [-Wunused-variable]
+     struct hostent* pHostInfo;   /* holds info about a machine */
+                     ^
+../src/server.cpp:35:10: warning: unused variable ‘pBuffer’ [-Wunused-variable]
+     char pBuffer[BUFFER_SIZE];
+          ^
+=======
 ../src/server.cpp:191:8: warning: unused variable ‘seenSpace’ [-Wunused-variable]
    bool seenSpace = false;
         ^
@@ -26,6 +41,7 @@ In file included from /usr/include/i386-linux-gnu/bits/local_lim.h:38:0,
 ../src/server.cpp:34:7: warning: unused variable ‘pBuffer’ [-Wunused-variable]
   char pBuffer[BUFFER_SIZE];
        ^
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 Finished building: ../src/server.cpp
  
 Building target: project2
@@ -34,5 +50,9 @@ g++  -o "project2"  ./src/server.o
 Finished building target: project2
  
 
+<<<<<<< HEAD
+16:31:29 Build Finished (took 333ms)
+=======
 20:20:48 Build Finished (took 446ms)
+>>>>>>> 6e9ac5084e3e7dad47eba9f1b764b7e7676126d3
 
