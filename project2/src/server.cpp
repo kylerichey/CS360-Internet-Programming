@@ -170,7 +170,7 @@ int main(int argc, char* argv[]) {
 				free(header);
 
 			} else {
-				//printf("Absolute path:%s\n", abPath);
+				printf("Absolute path:%s\n", abPath);
 
 				DIR *dirp;
 				struct dirent *dp;
@@ -181,17 +181,17 @@ int main(int argc, char* argv[]) {
 
 					char *indexPath = (char *) malloc(1000);
 					strcpy(indexPath, abPath);
-					strcat(indexPath, "index1.html");
-
+					strcat(indexPath, "index.html");
+					printf("%s\n",indexPath);
 					if (doesFileExists(indexPath)) {
 
 						printf("Sending Index.html\n");
 						//printf("File exists, sending to client\n");
 
-						struct stat st2;
-						stat(indexPath, &st2);
-						int size = st2.st_size;
-						char *body = (char *) malloc(size);
+						struct stat st3;
+						stat(indexPath, &st3);
+						int size = st3.st_size;
+						char *body = (char *) malloc(size+1);
 						char *header = (char *) malloc(1000);
 
 
