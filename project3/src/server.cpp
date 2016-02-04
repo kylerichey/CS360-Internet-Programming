@@ -24,7 +24,7 @@
 
 #define SOCKET_ERROR        -1
 #define BUFFER_SIZE         100
-#define QUEUE_SIZE          5
+#define QUEUE_SIZE          200
 #define NQUEUE 				200
 
 using namespace std;
@@ -74,6 +74,7 @@ void signalHandler(int status) {
 	switch (status) {
 	case 2:
 		printf("\nReceived signal SigInt\n");
+		exit(0);
 		break;
 	case 11:
 		printf("\nReceived signal SIGSEGV\n");
@@ -87,6 +88,7 @@ void signalHandler(int status) {
 		break;
 	default:
 		printf("\nReceived unknown signal\n");
+		exit(0);
 		break;
 
 	}
