@@ -24,43 +24,45 @@
 
 #define SOCKET_ERROR        -1
 #define BUFFER_SIZE         100
-
 #define QUEUE_SIZE          5
+#define NQUEUE 20
+
 
 using namespace std;
 
-int hSocket, hServerSocket; /* handle to socket */
-//struct hostent* pHostInfo; /* holds info about a machine */
-struct sockaddr_in Address; /* Internet socket address stuct */
-int nAddressSize = sizeof(struct sockaddr_in);
-int nHostPort;
-int NUM_THREADS = 1;
-char inputPath[255];
 
-sem_t sem;
 
-class MutexQueue {
-public:
-	void push(int qel) {
 
-		q.push(qel);
+sem_t full, empty, mutex;
 
-	}
-	;
-	int pop() {
 
-		int tmp;
-		tmp = q.front();
-		q.pop();
 
-		return (tmp);
-	}
-	;
-private:
-	queue<int> q;
-};
+class myqueue{
+         std::queue<int> stlqueue;
+        public:
+        void push(int sock)
+        {
+                sem_wait(&empty);
+                sem_wait(&mutex);
+                stlqueue.push(sock);
+                sem_post(&mutex);
+                sem_post(&full);
+        }
+        int pop(){
+                sem_wait(&full);
+                sem_wait(&mutex);
+                int rval = stlqueue.front();
+                stlqueue.pop();
+                sem_post(&mutex);
+                sem_post(&empty);
 
-MutexQueue que;
+                return(rval);
+
+        }
+}que;
+
+
+
 
 bool doesFileExists(const std::string& name) {
 	struct stat buffer;
@@ -102,24 +104,25 @@ void *socketWaiting(void *threadid) {
 
 	long tid;
 	tid = (long) threadid;
-	printf("Hello World! It's me, thread #%ld!\n", tid);
+
 
 	while (1) {
-		sem_wait(&sem);
-		//sleep(1);
+
+
 		int socket = que.pop();
 		//processing request
 
 		if (socket != 0) {
+			printf("Thread #%ld! ", tid);
 			printf("Going to respond to socket:%i\n", socket);
 		}
-		sem_post(&sem);
-		//sleep(1);
+
+
 
 	}
 
 }
-
+/*
 void server() {
 
 	char *buffer = (char *) malloc(1000);
@@ -333,14 +336,22 @@ void server() {
 		setsockopt(hSocket, SOL_SOCKET, SO_LINGER, &lin, sizeof(lin));
 	}
 	printf("\nClosing the socket");
-	/* close socket */
+	/* close socket
 	if (close(hSocket) == SOCKET_ERROR) {
 		printf("\nCould not close socket\n");
 		exit(0);
 	}
-}
+}*/
 
 int main(int argc, char* argv[]) {
+
+	int hSocket, hServerSocket; /* handle to socket */
+	//struct hostent* pHostInfo; /* holds info about a machine */
+	struct sockaddr_in Address; /* Internet socket address stuct */
+	int nAddressSize = sizeof(struct sockaddr_in);
+	int nHostPort;
+	int NUM_THREADS = 1;
+	char inputPath[255];
 
 	if (argc < 4) {
 		printf("\nUsage: server <host-port> <num threads> <dir-path>\n");
@@ -361,10 +372,13 @@ int main(int argc, char* argv[]) {
 	sigaction(SIGFPE, &signew, &sigold);
 	sigaction(SIGPIPE, &signew, &sigold);
 
-	sem_init(&sem, PTHREAD_PROCESS_PRIVATE, 1);
+	//sem_init(&sem, PTHREAD_PROCESS_PRIVATE, 1);
+    sem_init(&full, PTHREAD_PROCESS_PRIVATE, 0);
+    sem_init(&empty, PTHREAD_PROCESS_PRIVATE, NQUEUE);
+    sem_init(&mutex, PTHREAD_PROCESS_PRIVATE, 1);
+
 	// Now it is set to one, one person will be able to access at a time
 
-	printf("Got semaphore %d\n", sem);
 
 	NUM_THREADS = atoi(argv[2]);
 
@@ -453,9 +467,9 @@ int main(int argc, char* argv[]) {
 
 		printf("Sending socket connection to queue");
 
-		sem_wait(&sem);
+
 		que.push(hSocket);
-		sem_post(&sem);
+
 
 	} //while1
 }
