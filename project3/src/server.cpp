@@ -25,44 +25,37 @@
 #define SOCKET_ERROR        -1
 #define BUFFER_SIZE         100
 #define QUEUE_SIZE          5
-#define NQUEUE 20
-
+#define NQUEUE 				200
 
 using namespace std;
 
-
-
-
 sem_t full, empty, mutex;
+char inputPath[255];
+int socketsRespondedTo =0;
 
+class myqueue {
+	std::queue<int> stlqueue;
+public:
+	void push(int sock) {
+		sem_wait(&empty);
+		sem_wait(&mutex);
+		stlqueue.push(sock);
+		socketsRespondedTo++;
+		sem_post(&mutex);
+		sem_post(&full);
+	}
+	int pop() {
+		sem_wait(&full);
+		sem_wait(&mutex);
+		int rval = stlqueue.front();
+		stlqueue.pop();
+		sem_post(&mutex);
+		sem_post(&empty);
 
+		return (rval);
 
-class myqueue{
-         std::queue<int> stlqueue;
-        public:
-        void push(int sock)
-        {
-                sem_wait(&empty);
-                sem_wait(&mutex);
-                stlqueue.push(sock);
-                sem_post(&mutex);
-                sem_post(&full);
-        }
-        int pop(){
-                sem_wait(&full);
-                sem_wait(&mutex);
-                int rval = stlqueue.front();
-                stlqueue.pop();
-                sem_post(&mutex);
-                sem_post(&empty);
-
-                return(rval);
-
-        }
-}que;
-
-
-
+	}
+} que;
 
 bool doesFileExists(const std::string& name) {
 	struct stat buffer;
@@ -100,30 +93,9 @@ void signalHandler(int status) {
 
 }
 
-void *socketWaiting(void *threadid) {
-
-	long tid;
-	tid = (long) threadid;
 
 
-	while (1) {
-
-
-		int socket = que.pop();
-		//processing request
-
-		if (socket != 0) {
-			printf("Thread #%ld! ", tid);
-			printf("Going to respond to socket:%i\n", socket);
-		}
-
-
-
-	}
-
-}
-/*
-void server() {
+void server(int hSocket) {
 
 	char *buffer = (char *) malloc(1000);
 	char *path = (char *) malloc(1000);
@@ -336,12 +308,29 @@ void server() {
 		setsockopt(hSocket, SOL_SOCKET, SO_LINGER, &lin, sizeof(lin));
 	}
 	printf("\nClosing the socket");
-	/* close socket
+	// close socket
 	if (close(hSocket) == SOCKET_ERROR) {
 		printf("\nCould not close socket\n");
 		exit(0);
 	}
-}*/
+}
+
+void *socketWaiting(void *threadid) {
+
+	long tid;
+	tid = (long) threadid;
+
+	while (1) {
+
+		int socket = que.pop();
+		//processing request
+		printf("\nNew Socket received by thread #%ld. responding to socket:%i\n", tid,socket);
+		server(socket);
+
+	}
+	//return 0;
+
+}
 
 int main(int argc, char* argv[]) {
 
@@ -351,7 +340,7 @@ int main(int argc, char* argv[]) {
 	int nAddressSize = sizeof(struct sockaddr_in);
 	int nHostPort;
 	int NUM_THREADS = 1;
-	char inputPath[255];
+
 
 	if (argc < 4) {
 		printf("\nUsage: server <host-port> <num threads> <dir-path>\n");
@@ -373,12 +362,11 @@ int main(int argc, char* argv[]) {
 	sigaction(SIGPIPE, &signew, &sigold);
 
 	//sem_init(&sem, PTHREAD_PROCESS_PRIVATE, 1);
-    sem_init(&full, PTHREAD_PROCESS_PRIVATE, 0);
-    sem_init(&empty, PTHREAD_PROCESS_PRIVATE, NQUEUE);
-    sem_init(&mutex, PTHREAD_PROCESS_PRIVATE, 1);
+	sem_init(&full, PTHREAD_PROCESS_PRIVATE, 0);
+	sem_init(&empty, PTHREAD_PROCESS_PRIVATE, NQUEUE);
+	sem_init(&mutex, PTHREAD_PROCESS_PRIVATE, 1);
 
 	// Now it is set to one, one person will be able to access at a time
-
 
 	NUM_THREADS = atoi(argv[2]);
 
@@ -434,7 +422,7 @@ int main(int argc, char* argv[]) {
 	getsockname(hServerSocket, (struct sockaddr *) &Address,
 			(socklen_t *) &nAddressSize);
 
-	printf("\nMaking a listen queue of %d elements", QUEUE_SIZE);
+	printf("\nMaking a listen queue of %d elements\n", QUEUE_SIZE);
 	/* establish listen queue */
 	if (listen(hServerSocket, QUEUE_SIZE) == SOCKET_ERROR) {
 		printf("\nCould not listen\n");
@@ -455,9 +443,12 @@ int main(int argc, char* argv[]) {
 	}
 	// pthread_exit(NULL);
 
+	printf("\nDone making threads. Waiting for a connection\n");
+
 	while (1) {
 
-		printf("\nWaiting for a connection\n");
+		printf("\nSocketsRespondedTo:%i\n",socketsRespondedTo);
+
 		/* get the connected socket */
 		hSocket = accept(hServerSocket, (struct sockaddr*) &Address,
 				(socklen_t *) &nAddressSize);
@@ -467,9 +458,7 @@ int main(int argc, char* argv[]) {
 
 		printf("Sending socket connection to queue");
 
-
 		que.push(hSocket);
-
 
 	} //while1
 }
