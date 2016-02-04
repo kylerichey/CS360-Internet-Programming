@@ -106,7 +106,7 @@ void server(int hSocket) {
 	read(hSocket, buffer, 1000);
 
 	if (buffer[0] != 'G') {
-		printf("Invalid Get, Dropping Connection\n");
+		//printf("Invalid Get, Dropping Connection\n");
 	} else {
 
 		char * pch;
@@ -120,7 +120,7 @@ void server(int hSocket) {
 		free(path);
 
 		if (strstr(abPath, "favicon") != NULL) {
-			printf("Favicon request, Sending 404\n");
+			//printf("Favicon request, Sending 404\n");
 
 			char *header = (char *) malloc(1000);
 			strcpy(header, "HTTP/1.1 404 NOT FOUND\r\n\r\n");
@@ -129,7 +129,7 @@ void server(int hSocket) {
 			free(header);
 
 		} else {
-			printf("Absolute path:%s\n", abPath);
+			//printf("Absolute path:%s\n", abPath);
 
 			DIR *dirp;
 			struct dirent *dp;
@@ -141,10 +141,10 @@ void server(int hSocket) {
 				char *indexPath = (char *) malloc(1000);
 				strcpy(indexPath, abPath);
 				strcat(indexPath, "index.html");
-				printf("%s\n", indexPath);
+				//printf("%s\n", indexPath);
 				if (doesFileExists(indexPath)) {
 
-					printf("Sending Index.html\n");
+					//printf("Sending Index.html\n");
 					//printf("File exists, sending to client\n");
 
 					struct stat st3;
@@ -230,7 +230,7 @@ void server(int hSocket) {
 					free(abPath);
 				}
 			} else if (doesFileExists(abPath)) {
-				printf("File exists, sending to client\n");
+				//printf("File exists, sending to client\n");
 
 				struct stat st2;
 				stat(abPath, &st2);
@@ -309,7 +309,7 @@ void server(int hSocket) {
 		lin.l_linger = 10;
 		setsockopt(hSocket, SOL_SOCKET, SO_LINGER, &lin, sizeof(lin));
 	}
-	printf("\nClosing the socket");
+	//printf("\nClosing the socket");
 	// close socket
 	if (close(hSocket) == SOCKET_ERROR) {
 		printf("\nCould not close socket\n");
@@ -326,7 +326,7 @@ void *socketWaiting(void *threadid) {
 
 		int socket = que.pop();
 		//processing request
-		printf("\nNew Socket received by thread #%ld. responding to socket:%i\n", tid,socket);
+		//printf("\nNew Socket received by thread #%ld. responding to socket:%i\n", tid,socket);
 		server(socket);
 
 	}
@@ -445,20 +445,21 @@ int main(int argc, char* argv[]) {
 	}
 	// pthread_exit(NULL);
 
-	printf("\nDone making threads. Waiting for a connection\n");
+	printf("\nDone making threads. Waiting for connections\n");
 
 	while (1) {
-
-		printf("\nSocketsRespondedTo:%i\n",socketsRespondedTo);
+		if(!(socketsRespondedTo%100))
+		{
+			printf("\nSocketsRespondedTo:%i\n",socketsRespondedTo);
+		}
 
 		/* get the connected socket */
 		hSocket = accept(hServerSocket, (struct sockaddr*) &Address,
 				(socklen_t *) &nAddressSize);
 
-		printf("\nGot a connection from %X (%d)\n", Address.sin_addr.s_addr,
-				ntohs(Address.sin_port));
+		//printf("\nGot a connection from %X (%d)\n", Address.sin_addr.s_addr,ntohs(Address.sin_port));
 
-		printf("Sending socket connection to queue");
+		//printf("Sending socket connection to queue");
 
 		que.push(hSocket);
 
