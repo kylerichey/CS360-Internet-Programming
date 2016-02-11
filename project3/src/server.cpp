@@ -448,10 +448,10 @@ int main(int argc, char* argv[]) {
 	printf("\nDone making threads. Waiting for connections\n");
 
 	while (1) {
-		if(!(socketsRespondedTo%100))
-		{
+		//if(!(socketsRespondedTo%100))
+		//{
 			printf("\nSocketsRespondedTo:%i\n",socketsRespondedTo);
-		}
+		//}
 
 		/* get the connected socket */
 		hSocket = accept(hServerSocket, (struct sockaddr*) &Address,
