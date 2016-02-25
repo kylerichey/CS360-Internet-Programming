@@ -1,0 +1,135 @@
+<html> 
+	<head>
+		<title>City Finder</title> 
+		<script src="https://code.jquery.com/jquery-1.10.2.js"> </script>
+	</head>
+	
+	<body> 
+		<form> Enter A Utah City: <input type="text" id="cityfield" value=""><br>
+			Suggestion: <span id="txtHint">Empty</span> 
+			<input id="button" type="submit" value="Submit"> 
+		</form>
+
+		<p>City</p> 
+		<textarea id="dispcity">No City</textarea>
+		<p>Current Weather</p> <div id="weather">No weather</div> 
+		
+		<br><br><br>
+		<p>Kyle's Warcraft Character</p>
+		<form id="wowForm"> Enter A Wow Character on Kil'Jaeden (Try Tarranani or Vvyst): <input type="text" id="wowcharfield" value=""><br>			
+			<button id="wowsubmit" type="submit">Submit</button>
+		</form>
+		<p>Random Mount:</p> <div id="warcraft"> No Information</div>		
+		
+	
+	</body>
+</html>
+ 
+  <script> 
+ $(document).ready(function() {
+	$( "#cityfield" ).keyup(function() { 
+		var url = "https://students.cs.byu.edu/~clement/CS360/ajax/getcity.cgi?q="+$("#cityfield").val(); 
+		$.getJSON(url,function(data) {
+			var everything; everything = "<ul>";
+			$.each(data, function(i,item) { 
+				everything += "<li> "+data[i].city + '</li>'; 
+			}); 
+			everything += "</ul>"; 
+			$("#txtHint").html(everything);
+			});  
+	});
+  
+	$("#button").click(function(e){ 
+		var value = $("#cityfield").val(); 
+		//console.log(value); 
+		e.preventDefault();
+		$("#dispcity").text(value); 
+
+		var weatherURL = "http://api.wunderground.com/api/db59594261e53b94/conditions/q/UT/";
+		weatherURL += value;
+		weatherURL += ".json";
+		console.log(weatherURL);
+		$.ajax({ url : weatherURL, 
+			dataType : "jsonp", 
+			success : function(parsed_json) {
+				var location = parsed_json['current_observation']['display_location']['city']; 
+				var temp_string = parsed_json['current_observation']['temperature_string']; 
+				var current_weather = parsed_json['current_observation']['weather']; 
+				var pressure = parsed_json['current_observation']['pressure_mb'];
+				everything = "<ul>"; 
+				everything += "<li>Location: "+location;
+				everything += "<li>Temperature: "+temp_string;
+				everything += "<li>Weather: "+current_weather;
+				everything += "<li>Pressure: " + pressure;
+				everything += "</ul>"; 
+				$("#weather").html(everything); 
+			}
+		});  
+	});  
+	
+	
+	//Kyles wow script
+	$("#wowForm").on('submit',function(e){ 
+		//console.log("got wow submit button");
+		var value = $("#wowcharfield").val();
+		//console.log(value);
+		var wowapi = "https://us.api.battle.net/wow/character/kiljaeden/"
+		wowapi += value;
+		wowapi += "?fields=mounts&locale=en_US&apikey=zzqd97zu2xj982uemppbvnjdfea5acpb";
+		//console.log(wowapi);
+		$.getJSON(wowapi,function(data, status) {
+			//console.log(data);
+			var time  = timeConverter( data.lastModified);
+			
+			//console.log(time);
+			//var everything; everything = "<ul>"; $.each(data, function(name,item) { everything += "<li> " + name + ': ' + item }); everything += "</ul>"; $("#warcraft").html(everything);
+			var numMounts = data.mounts.collected.length;
+			var randomMount = getRandomInt(0,numMounts);
+			//console.log(randomMount);
+			//console.log(data.mounts.collected[randomMount]);
+			mounts.push(data.mounts.collected[randomMount].name);
+			
+			var mountList;
+			mountList = "<ul>"
+			$.each(mounts, function(i,item) { 
+				mountList += '<li>' + item  + '</li>'; 
+			}); 
+			mountList += "</ul>";
+			$("#warcraft").html(mountList);
+		});
+		return false;
+	});
+		
+
+var mounts = [];
+		
+
+function timeConverter(UNIX_timestamp){
+  var a = new Date(UNIX_timestamp * 1000);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+  return time;
+}
+
+
+// Returns a random integer between min (included) and max (excluded)
+// Using Math.round() will give you a non-uniform distribution!
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+		
+
+
+	
+	
+});
+ </script>
+
+  
