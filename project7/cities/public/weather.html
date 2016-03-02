@@ -1,0 +1,78 @@
+<html> 
+	<head>
+		<title>City Finder</title> 
+		<script src="https://code.jquery.com/jquery-1.10.2.js"> </script>
+	</head>
+	
+	<body> 
+		<form> Enter A Utah City: <input type="text" id="cityfield" value=""><br>
+			Suggestion: <span id="txtHint">Empty</span> 
+			<input id="button" type="submit" value="Submit"> 
+		</form>
+
+		<p>City</p> 
+		<textarea id="dispcity">No City</textarea>
+		<p>Current Weather</p> <div id="weather">No weather</div> 
+		
+		<br><br><br>
+		<p>Kyle's Warcraft Character</p>
+		<form id="wowForm"> Enter A Wow Character on Kil'Jaeden (Try Tarranani or Vvyst): <input type="text" id="wowcharfield" value=""><br>			
+			<button id="wowsubmit" type="submit">Submit</button>
+		</form>
+		<p>Random Mount:</p> <div id="warcraft"> No Information</div>		
+		
+	
+	</body>
+</html>
+ 
+  <script> 
+ $(document).ready(function() {
+	$( "#cityfield" ).keyup(function() { 
+		//var url = "https://students.cs.byu.edu/~clement/CS360/ajax/getcity.cgi?q="+$("#cityfield").val(); 
+		var url = "http://cs360.kylerichey.com:3000/getcity?q="+$("#cityfield").val(); 
+		//var url = "http://localhost:3000/getcity?q="+$("#cityfield").val(); 
+		$.getJSON(url,function(data) {
+			var everything; everything = "<ul>";
+			$.each(data, function(i,item) { 
+				everything += "<li> "+data[i].city + '</li>'; 
+			}); 
+			everything += "</ul>"; 
+			$("#txtHint").html(everything);
+			});  
+	});
+  
+	$("#button").click(function(e){ 
+		var value = $("#cityfield").val(); 
+		//console.log(value); 
+		e.preventDefault();
+		$("#dispcity").text(value); 
+
+		var weatherURL = "http://api.wunderground.com/api/db59594261e53b94/conditions/q/UT/";
+		weatherURL += value;
+		weatherURL += ".json";
+		console.log(weatherURL);
+		$.ajax({ url : weatherURL, 
+			dataType : "jsonp", 
+			success : function(parsed_json) {
+				var location = parsed_json['current_observation']['display_location']['city']; 
+				var temp_string = parsed_json['current_observation']['temperature_string']; 
+				var current_weather = parsed_json['current_observation']['weather']; 
+				var pressure = parsed_json['current_observation']['pressure_mb'];
+				everything = "<ul>"; 
+				everything += "<li>Location: "+location;
+				everything += "<li>Temperature: "+temp_string;
+				everything += "<li>Weather: "+current_weather;
+				everything += "<li>Pressure: " + pressure;
+				everything += "</ul>"; 
+				$("#weather").html(everything); 
+			}
+		});  
+	});  
+		
+	
+	
+	
+});
+ </script>
+
+  
