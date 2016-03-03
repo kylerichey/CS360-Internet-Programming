@@ -28,21 +28,24 @@ for(var i = 0; i < cities.length; i++) {
 
  // console.log("In getcity route"); 
  
-  //console.log(myRe);
+  //console.log(myRe); 
 }); 
 	  
 
 	  
 router.get('/getcat',function(req,res,next) { 
 var randNum = Math.floor(Math.random() * (4 - 1) + 1);
+
 console.log(randNum);
 var fileStream = fs.createReadStream(__dirname + '/../cats/cat' + randNum + '.jpg');
 	fileStream.pipe(res);
 
 });
 
-router.get('/getcat/:id',function(req,res,next) { 	
-	fs.createReadStream(__dirname + '/../cats/cat' + req.params.id + '.jpg').pipe(res);
+router.get('/getcat/:id',function(req,res,next) {
+		if(!(req.params.id > 4 || req.params.id < 1)){
+			fs.createReadStream(__dirname + '/../cats/cat' + req.params.id + '.jpg').pipe(res);
+		}
 });
 
 

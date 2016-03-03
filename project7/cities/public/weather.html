@@ -15,11 +15,11 @@
 		<p>Current Weather</p> <div id="weather">No weather</div> 
 		
 		<br><br><br>
-		<p>Kyle's Warcraft Character</p>
-		<form id="wowForm"> Enter A Wow Character on Kil'Jaeden (Try Tarranani or Vvyst): <input type="text" id="wowcharfield" value=""><br>			
+		<p>Kyle's Cat Picture API</p>
+		<form id="wowForm"> Enter A Number 1 through 4, or no number at all for a random picture: <input type="text" id="wowcharfield" value=""><br>			
 			<button id="wowsubmit" type="submit">Submit</button>
 		</form>
-		<p>Random Mount:</p> <div id="warcraft"> No Information</div>		
+		<p>Cat Picture:</p> <div id="warcraft"> No Information</div>		
 		
 	
 	</body>
@@ -69,7 +69,16 @@
 		});  
 	});  
 		
-	
+	//kyles cat api
+	$("#wowForm").on('submit',function(e){  
+		//console.log("got submit")
+		var value = $("#wowcharfield").val();
+		var url = "http://cs360.kylerichey.com:3000/getcat/"+value;
+		//console.log(url);
+		//$("#warcraft").html('');
+		$("#warcraft").html('<img src="http://cs360.kylerichey.com:3000/getcat/' + value + '">')
+		return false;
+	});
 	
 	
 });
