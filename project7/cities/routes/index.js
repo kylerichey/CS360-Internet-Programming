@@ -34,7 +34,7 @@ for(var i = 0; i < cities.length; i++) {
 
 	  
 router.get('/getcat',function(req,res,next) { 
-var randNum = Math.floor(Math.random() * (4 - 1) + 1);
+var randNum = Math.floor(Math.random() * (4 ) + 1);
 
 console.log(randNum);
 var fileStream = fs.createReadStream(__dirname + '/../cats/cat' + randNum + '.jpg');
