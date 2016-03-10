@@ -1,0 +1,51 @@
+ <!DOCTYPE html> 
+ <html> 
+ <head> 
+	<title>test!</title> 
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script> 
+<script>
+$(document).ready(function(){
+	$("#serialize").click(function(){ 
+		
+		var MongoClient = require('mongodb').MongoClient;
+		function addObject(collection, object){
+		  collection.insert(object, function(err, result){
+			if(!err){
+			  console.log("Inserted : ");
+			  console.log(result);
+			}
+		  });
+		}
+		MongoClient.connect("mongodb://localhost/", function(err, db) {  
+		  var myDB = db.db("astro");
+		  myDB.dropCollection("nebulae");
+		  myDB.createCollection("nebulae", function(err, nebulae){
+			addObject(nebulae, {ngc:"NGC 7293", name:"Helix",
+			  type:"planetary",location:"Aquila"});
+			addObject(nebulae, {ngc:"NGC 6543", name:"Cat's Eye",
+			  type:"planetary",location:"Draco"});
+			addObject(nebulae, {ngc:"NGC 1952", name: "Crab",
+			  type:"supernova",location:"Taurus"});
+		  });
+		  setTimeout(function(){ db.close(); }, 3000);
+		});
+
+	}); 
+});
+</script> 
+
+</head>
+
+ <body>
+ <form id="commentForm" action="">
+	<label for="name">Name: </label><input type="text" id="Name" placeholder="Name"><br>
+	<label for="comment">comment: </label><input type="text" id="Comment" placeholder="Comment"><br> 
+	</form>
+
+	<button id="serialize">Serialize form values</button>
+	<button id="getThem">Get Comments</button> 
+	<div id="json"></div>
+	<div id="done"></div>
+	<div id="comments"></div> 
+	</body> 
+	</html>

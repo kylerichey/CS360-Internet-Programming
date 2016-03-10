@@ -1,0 +1,29 @@
+ <!DOCTYPE html> 
+ <html> 
+ <head> 
+	<title>Comments!</title> 
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script> 
+<script src="javascripts/comments.js"></script> </head>
+<script src="javascripts/searchcomments.js"></script> </head>
+
+ <body>
+ <form id="commentForm" action="">
+	<label for="name">Name: </label><input type="text" id="Name" placeholder="Name"><br>
+	<label for="comment">comment: </label><input type="text" id="Comment" placeholder="Comment"><br> 
+	</form>
+
+	<button id="serialize">Serialize form values</button>
+	<button id="getThem">Get All Comments</button> 
+	<div id="json"></div>
+	<div id="done"></div>
+	<div id="comments"></div> 
+	
+	<p></p>
+	Creative Portion: Custom Search
+	 <form id="searchform" action="">
+	 <label for="searchname">Search: </label><input type="text" id="Searchname" placeholder="Name"><br>
+	 </form>
+	 <button id="getspecific">Get Specific Comment</button> 
+	<div id= "specificcomments"></div>
+	</body> 
+	</html>
