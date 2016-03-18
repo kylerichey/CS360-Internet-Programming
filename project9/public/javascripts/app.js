@@ -2,7 +2,7 @@ angular.module('comment', [])
 .controller('MainCtrl', [ 
 	'$scope','$http', 
 	function($scope,$http){ 
-		$scope.test = 'Hello world!';
+		//$scope.test = 'Hello world!';
 
  $scope.comments = [
 		 {title:'Comment 1', upvotes:5}, 

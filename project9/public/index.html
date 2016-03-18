@@ -1,11 +1,24 @@
+<!DOCTYPE html>
 <html> 
-<head> 
+<head>
+<style> 
+	div {
+	  transition: all linear 0.5s;	  
+	  height: 40px;
+	  width: 100%;
+	  position: relative;
+	  top: 0;
+	  left: 0;
+	}	
+	</style>
+	
 	<title>Comments</title>
 	 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"> 
 	 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script> 
+	 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
 	 <script src="javascripts/app.js"></script> 
 </head> 
-	<body ng-app="comment" ng-controller="MainCtrl"> 
+	<body ng-app="comment" ng-controller="MainCtrl" ng-app="ngAnimate"> 
 	<div class="row">
 	 <div class="col-md-6 col-md-offset-3"> 
 	 <div class="page-header"> 
@@ -16,14 +29,15 @@
 		<input type="text" ng-model="formContent"></input>
 		<button type="submit">Add Comment</button> 
 	 </form> 
-	 <div> 
-		{{test}} 
-	 </div> 
-	 <div ng-repeat="comment in comments | orderBy: '-upvotes'"> 
+	
+	 <div ng-hide="myCheck" ng-repeat="comment in comments | orderBy: '-upvotes'"> 
 		<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>
 		{{comment.title}} - upvotes: {{comment.upvotes}} 
 		</div>
 	 </div>
 	 </div>
+	 
+	 <h1>Hide the Comments: <input type="checkbox" ng-model="myCheck"></h1>		
+
 	 </body> 
  </html>
