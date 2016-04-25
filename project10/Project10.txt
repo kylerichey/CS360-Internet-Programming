@@ -1,0 +1,13 @@
+
+    1) The URL of your REST service that returns the PID
+    2) The URL of your angular application that repeatedly displays 100 PIDs
+    3) The URL of the github repository with all of your source code.
+    4) The grade you think you should get on the lab (percentage)
+
+	
+	
+	Kyle Richey
+	1)	http://cs360.kylerichey.com:3001/pid
+	2) 	http://cs360.kylerichey.com:3001/
+	3)	https://github.com/kylerichey/cs360/tree/master/project10
+	4)	100%
